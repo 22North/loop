@@ -1,0 +1,12 @@
+.card {
+    border: 1px solid black;
+}
+
+.card__title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.card__main-text {
+    margin-bottom: 5px;
+}
