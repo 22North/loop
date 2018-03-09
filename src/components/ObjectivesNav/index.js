@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ObjectivesStatusTabs = (props) => 
+const ObjectivesNav = (props) => 
     <div>
         <ul>
             <li>{"Drafts."}</li>
@@ -10,4 +10,4 @@ const ObjectivesStatusTabs = (props) =>
         </ul>
     </div>
 
-export default ObjectivesStatusTabs
+export default ObjectivesNav

@@ -1,9 +1,6 @@
 import React from 'react'
-import { Route } from "react-router-dom";
-import Home from "../containers/Home";
-import Objectives from "../containers/Objectives";
-import Feedback from "../containers/Feedback";
-import MyTeam from "../containers/MyTeam";
+import { Home, Objectives, Feedback, MyTeam  } from "../containers"
+import { Route } from "react-router-dom"
 
 const Routes = () => (
     <div>
