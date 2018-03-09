@@ -10,7 +10,7 @@ const Header = (props) =>
             <div className="row">
                 <div className="col-sm-6">
                     <div className="header__logo float-left">
-                        <NavLink to="/">{"loop"}</NavLink>
+                        <NavLink to="/"><img alt="loop" src="/logo.svg" /></NavLink>
                     </div>
                 </div>
                 <div className="col-sm-6">
