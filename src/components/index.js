@@ -1,9 +1,9 @@
 import Card from "./Card"
 import Header from "./Header"
-import ObjectivesNav from "./ObjectivesNav"
+import ObjectiveCards from "./ObjectiveCards"
 
 export {
     Card,
     Header,
-    ObjectivesNav
+    ObjectiveCards,
 }

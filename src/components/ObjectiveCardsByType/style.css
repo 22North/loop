@@ -1,0 +1,11 @@
+.objective-cards-by-type > .container {
+    background-color: #eee;
+    border-radius: 10px;
+    padding: 30px 15px;
+}
+
+.objective-cards-by-type__title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
