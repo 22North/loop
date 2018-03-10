@@ -1,4 +1,5 @@
 import React from 'react'
+import Card from '../Card'
 
 import './style.css'
 
@@ -10,8 +11,12 @@ const ObjectiveCardsByDraft = (props) =>
                     <h3 className="objective-cards-by-type__title">Drafts.</h3>
                 </div>
             </div>
-            <div class="row">
-                <div className="col-sm-4"></div>  
+            <div className="row">
+                {props.data.objectives.map((item) => (
+                    <div className="col-sm-3" key={item.id}>
+                        <Card data={item} />
+                    </div>
+                ))}
             </div>
         </div>
     </div>
@@ -24,7 +29,7 @@ const ObjectiveCardsByInProgress = (props) =>
                     <h3 className="objective-cards-by-type__title">In Progress.</h3>
                 </div>
             </div>
-            <div class="row">
+            <div className="row">
                 <div className="col-sm-4"></div>  
             </div>
         </div>
@@ -38,7 +43,7 @@ const ObjectiveCardsByComplete = (props) =>
                     <h3 className="objective-cards-by-type__title">Complete.</h3>
                 </div>
             </div>
-            <div class="row">
+            <div className="row">
                 <div className="col-sm-4"></div>  
             </div>
         </div>

@@ -1,16 +1,40 @@
 import React from 'react'
 import { ObjectiveCards } from '../../components'
+import { connect } from 'react-redux';
+import { getObjectives } from '../../data/objectives/actions';
 
-const Objectives = () => 
-    <div className="main-container main-container--objectives">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h2>{"Performance Review."}</h2>
+const mapStateToProps = (state) => {
+    return {
+        objectives: state.objectives
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getObjectives: () => dispatch(getObjectives())
+    };
+};
+
+class Objectives extends React.Component {
+    
+    componentDidMount() {
+        this.props.getObjectives();
+    }
+
+    render() {
+        return (
+            <div className="main-container main-container--objectives">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <h2>{"Performance Review."}</h2>
+                        </div>
+                    </div>    
                 </div>
-            </div>    
-        </div>
-        <ObjectiveCards />
-    </div>
+                <ObjectiveCards data={this.props.objectives} />
+            </div>      
+        )
+    }
+}
 
-export default Objectives
+export default connect(mapStateToProps, mapDispatchToProps)(Objectives)
