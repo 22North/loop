@@ -17,7 +17,7 @@ class CardFront extends React.Component {
                 <div className="date"></div>
                 <div className="card__title">{this.props.data.title}</div>
                 <div className="card__main-text">{this.props.data.description}</div>
-                <button>Show card back.</button>
+                <button className="d-none">Show card back.</button>
             </div>
         )
     }
