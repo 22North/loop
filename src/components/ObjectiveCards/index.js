@@ -13,10 +13,10 @@ class ObjectiveCards extends React.Component {
     }
     
     render() {
-        return (
+        return (    
             <div>
                 <ObjectiveCardsFilter />
-                <ObjectiveCardsByDraft />
+                <ObjectiveCardsByDraft data={this.props.data} />
                 <ObjectiveCardsByInProgress />
                 <ObjectiveCardsByComplete />
             </div>
