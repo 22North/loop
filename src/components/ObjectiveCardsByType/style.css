@@ -1,7 +1,7 @@
-.objective-cards-by-type > .container {
+.objective-cards-by-type__inner {
     background-color: #eee;
     border-radius: 10px;
-    padding: 30px 15px;
+    padding: 30px;
 }
 
 .objective-cards-by-type__title {

@@ -1,0 +1,4 @@
+.objectives-filter__inner {
+    border-bottom: 2px solid #000000;
+    overflow: auto;
+}
