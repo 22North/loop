@@ -13,3 +13,17 @@ export function getObjectivesSuccess(items) {
         items
     };
 }
+
+export function getObjective() {
+    return (dispatch) => {
+        axios.get('/objective.json')
+            .then((response) => dispatch(getObjectiveSuccess(response.data)))
+    };
+}
+
+export function getObjectiveSuccess(item) {
+    return {
+        type: 'GET_OBJECTIVE_SUCCESS',
+        item
+    };
+}

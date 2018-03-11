@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
-import { objectives } from './reducers'
+import { objectives, objective } from './reducers'
 
 export default combineReducers({
-    objectives
+    objectives,
+    objective
 });

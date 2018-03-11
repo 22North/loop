@@ -1,11 +1,12 @@
 import React from 'react'
 import { ObjectiveCards } from '../../components'
 import { connect } from 'react-redux';
-import { getObjectives } from '../../data/objectives/actions';
+import { getObjectives } from '../../data/objectives/actions'
 
 const mapStateToProps = (state) => {
     return {
-        objectives: state.objectives
+        objectives: state.objectives,
+        objective: state.objective.objective
     };
 };
 
@@ -19,10 +20,12 @@ class Objectives extends React.Component {
     
     componentDidMount() {
         this.props.getObjectives();
+        
     }
 
     render() {
         return (
+            
             <div className="main-container main-container--objectives">
                 <div className="container">
                     <div className="row">
@@ -32,6 +35,9 @@ class Objectives extends React.Component {
                     </div>    
                 </div>
                 <ObjectiveCards data={this.props.objectives} />
+                
+                { this.props.objective !== null ? <div>{ <div>{this.props.objective.title}</div>}</div>: null }
+                
             </div>      
         )
     }
