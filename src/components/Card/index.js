@@ -1,5 +1,14 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { getObjective } from '../../data/objectives/actions'
+
 import './style.css'
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getObjective: () => dispatch(getObjective())
+    };
+};
 
 class CardFront extends React.Component {
     
@@ -17,7 +26,7 @@ class CardFront extends React.Component {
                 <div className="date"></div>
                 <div className="card__title">{this.props.data.title}</div>
                 <div className="card__main-text">{this.props.data.description}</div>
-                <button className="d-none">Show card back.</button>
+                <button onClick={() => this.props.getObjective()}>Get objective.</button>
             </div>
         )
     }
@@ -51,13 +60,17 @@ class Card extends React.Component {
         this.setState({showCardFront: false})
     }
 
+    getObjective() {
+        this.props.getObjective()
+    }
+
     render() {
         return (
             <div className="card">
-                {this.state.showCardFront ? <CardFront handleCardView={this.showCardBack} data={this.props.data} /> : <CardBack handleCardView={this.showCardFront} />}
+                {this.state.showCardFront ? <CardFront handleCardView={this.showCardBack} data={this.props.data} getObjective={this.getObjective.bind(this)} /> : <CardBack handleCardView={this.showCardFront} />}
             </div>
         )
     }
 }
 
-export default Card
+export default connect(null, mapDispatchToProps)(Card)
