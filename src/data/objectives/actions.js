@@ -27,3 +27,11 @@ export function getObjectiveSuccess(item) {
         item
     };
 }
+
+export function clearObjective() {
+    return (dispatch) => {
+        dispatch({
+            type: 'CLEAR_OBJECTIVE'  
+        })
+    };
+}

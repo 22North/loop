@@ -1,0 +1,21 @@
+.objective-view {
+    position: absolute;
+    width: 100%;
+    top: 55px;
+}
+
+.objective-view__inner {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 0px rgb(199, 199, 199);
+    padding: 30px;
+    position: relative;
+}
+
+.objective-view__close {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    z-index: 1;
+}

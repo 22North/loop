@@ -22,6 +22,11 @@ export function objective(state = INITIAL_STATE, action) {
                 ...state, 
                 objective: action.item
             }
+        case 'CLEAR_OBJECTIVE':
+            return {
+                ...state, 
+                objective: null
+            }
         default:
             return state
     }
