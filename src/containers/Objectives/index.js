@@ -1,7 +1,11 @@
 import React from 'react'
 import { ObjectiveCards } from '../../components'
+import { ObjectiveView } from '../../components'
 import { connect } from 'react-redux';
 import { getObjectives } from '../../data/objectives/actions'
+import { clearObjective } from '../../data/objectives/actions'
+
+import './style.css'
 
 const mapStateToProps = (state) => {
     return {
@@ -12,7 +16,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getObjectives: () => dispatch(getObjectives())
+        getObjectives: () => dispatch(getObjectives()),
+        clearObjective: () => dispatch(clearObjective())
     };
 };
 
@@ -20,7 +25,6 @@ class Objectives extends React.Component {
     
     componentDidMount() {
         this.props.getObjectives();
-        
     }
 
     render() {
@@ -34,10 +38,12 @@ class Objectives extends React.Component {
                         </div>
                     </div>    
                 </div>
-                <ObjectiveCards data={this.props.objectives} />
-                
-                { this.props.objective !== null ? <div>{ <div>{this.props.objective.title}</div>}</div>: null }
-                
+
+                <div className="objectives-container">
+                    <ObjectiveCards data={this.props.objectives} />
+                    { this.props.objective !== null ? <ObjectiveView data={this.props.objective} close={this.props.clearObjective} />: null }
+                </div>
+
             </div>      
         )
     }
