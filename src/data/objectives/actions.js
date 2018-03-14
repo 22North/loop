@@ -35,3 +35,12 @@ export function clearObjective() {
         })
     };
 }
+
+export function updateObjective(item) {
+    return (dispatch) => {
+        dispatch({
+            type: 'UPDATE_OBJECTIVE',
+            item
+        })
+    };
+}
