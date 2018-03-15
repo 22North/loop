@@ -17,6 +17,9 @@ const ObjectiveCardsByDraft = (props) =>
                                     </div>
                                 </div>
                                 <div className="row">
+                                    <div className="col-sm-3">
+                                        <button onClick={() => props.create()}>Create new objective.</button>
+                                    </div>
                                     {props.data.map((item) => (
                                         <div className="col-sm-3" key={item.id}>
                                             <Card data={item} />
@@ -32,7 +35,6 @@ const ObjectiveCardsByDraft = (props) =>
     } else {
         return null
     }}
-    
     
 const ObjectiveCardsByInProgress = (props) => 
     {if (props.isVisible) {
