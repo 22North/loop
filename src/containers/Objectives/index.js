@@ -2,9 +2,7 @@ import React from 'react'
 import { ObjectiveCards } from '../../components'
 import { ObjectiveView } from '../../components'
 import { connect } from 'react-redux';
-import { getObjectives } from '../../data/objectives/actions'
-import { clearObjective } from '../../data/objectives/actions'
-import { updateObjective } from '../../data/objectives/actions'
+import { createObjective, getObjectives, updateObjective, clearObjective } from '../../data/objectives/actions'
 
 import './style.css'
 
@@ -17,9 +15,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        createObjective: () => dispatch(createObjective()),
         getObjectives: () => dispatch(getObjectives()),
-        clearObjective: () => dispatch(clearObjective()),
         updateObjective: (data) => dispatch(updateObjective(data)),
+        clearObjective: () => dispatch(clearObjective()),
     };
 };
 
@@ -27,6 +26,12 @@ class Objectives extends React.Component {
     
     componentDidMount() {
         this.props.getObjectives();
+    }
+
+    renderObjectiveView() {
+        return this.props.objective !== null
+            ? <ObjectiveView data={ this.props.objective } close={ this.props.clearObjective } update={ this.props.updateObjective } />
+            : null
     }
 
     render() {
@@ -40,8 +45,8 @@ class Objectives extends React.Component {
                     </div>    
                 </div>
                 <div className="objectives-container">
-                    <ObjectiveCards data={this.props.objectives} />
-                    { this.props.objective !== null ? <ObjectiveView data={ this.props.objective } close={ this.props.clearObjective } update={ this.props.updateObjective } /> : null }
+                    <ObjectiveCards data={ this.props.objectives } create={ this.props.createObjective } />
+                    { this.renderObjectiveView() }
                 </div>
             </div>      
         )

@@ -44,3 +44,28 @@ export function updateObjective(item) {
         })
     };
 }
+
+export function createObjective(success) {
+    return (dispatch) => {
+        const emptyObjective = {
+            status: 'draft',
+            id: null,
+            title: null,
+            description: null,
+            dueDate: null,
+            sharedwith: [],
+            documents: [],
+            isNewlyCreated: true
+        }
+        dispatch(createObjectiveSuccess(emptyObjective))
+    }
+}
+
+export function createObjectiveSuccess(item) {   
+    return (dispatch) => {
+        dispatch({
+            type: 'CREATE_OBJECTIVE_SUCCESS',
+            item
+        })
+    };
+}

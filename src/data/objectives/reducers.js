@@ -23,9 +23,13 @@ export function objective(state = INITIAL_STATE, action) {
                 objective: action.item
             }
         case 'UPDATE_OBJECTIVE':
-            console.log(action.item)
             return {
                 ...state, 
+                objective: action.item
+            }
+        case 'CREATE_OBJECTIVE_SUCCESS':
+            return {
+                ...state,
                 objective: action.item
             }
         case 'CLEAR_OBJECTIVE':

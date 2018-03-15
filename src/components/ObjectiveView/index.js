@@ -53,6 +53,35 @@ class ObjectiveView extends React.Component {
         this.setState({ showEditFields: true })
     }
 
+    renderStatusHeader() {
+        return (
+            <div className="row mb-4">
+                <div className="col-sm-12">
+                    { this.props.data.isNewlyCreated ? <div><span>Create objective: </span><span>{ this.props.data.status }</span></div> : <div><span>Objective status: </span><span>{ this.props.data.status }</span></div> }
+                </div>
+            </div>
+        )
+    }
+
+    renderTitleAndDescription() {
+        return (
+            <div>
+                <ObjectiveViewEditText data={ this.props.data } showEditFields={ this.props.data.isNewlyCreated || this.state.showEditFields } />
+                <ObjectViewSavedText data={ this.props.data } showEditFields={ this.props.data.isNewlyCreated || this.state.showEditFields } showEditFieldsHandle={ this.showEditFieldsHandle.bind(this) } />
+            </div>
+        )
+    }
+
+    renderCallToAction() {
+        return (
+            <div className="row">
+                <div className="col-sm-12">
+                    <button onClick={ () => this.props.update(this.props.data) }>Save.</button>
+                </div>
+            </div>
+        )
+    }
+
     render() {
         return (
             <div className="objective-view">
@@ -61,18 +90,13 @@ class ObjectiveView extends React.Component {
                         <div className="col-sm-12">
                             <div className="objective-view__inner">
                                 <button className="objective-view__close" onClick={ () => this.props.close() }>close</button>
-                                <div className="row mb-4">
-                                    <div className="col-sm-12">
-                                        <div>{ this.props.data.status }</div>
-                                    </div>
-                                </div>
-                                <ObjectiveViewEditText data={ this.props.data } showEditFields={ this.state.showEditFields } />
-                                <ObjectViewSavedText data={ this.props.data } showEditFields={ this.state.showEditFields } showEditFieldsHandle={ this.showEditFieldsHandle.bind(this) } />
-                                <div className="row">
-                                    <div className="col-sm-12">
-                                        <button onClick={ () => this.props.update(this.props.data) }>Save.</button>
-                                    </div>
-                                </div>
+                                
+                                { this.renderStatusHeader() }
+
+                                { this.renderTitleAndDescription() }
+                                
+                                { this.renderCallToAction() }
+
                             </div>
                         </div>
                     </div>
