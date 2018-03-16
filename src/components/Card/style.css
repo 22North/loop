@@ -12,4 +12,6 @@
 
 .card__main-text {
     margin-bottom: 5px;
+    height: 100px;
+    overflow: hidden;
 }
