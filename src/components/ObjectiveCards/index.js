@@ -24,9 +24,9 @@ class ObjectiveCards extends React.Component {
         return (    
             <div>
                 <ObjectiveCardsFilter setType={ this.setObjectiveType.bind(this) } />
-                <ObjectiveCardsByDraft data={ this.props.data.objectives.filter(item => item.type === 'draft') } create={ this.props.create } isVisible={ this.isVisible('draft') } />
-                <ObjectiveCardsByInProgress data={ this.props.data.objectives.filter(item => item.type === 'inProgress') } isVisible={ this.isVisible('inProgress') } />
-                <ObjectiveCardsByComplete data={ this.props.data.objectives.filter(item => item.type === 'complete') } isVisible={ this.isVisible('complete') } />
+                <ObjectiveCardsByDraft data={ this.props.data.objectives.filter(item => item.status === 'draft') } create={ this.props.create } isVisible={ this.isVisible('draft') } />
+                <ObjectiveCardsByInProgress data={ this.props.data.objectives.filter(item => item.status === 'inProgress') } isVisible={ this.isVisible('inProgress') } />
+                <ObjectiveCardsByComplete data={ this.props.data.objectives.filter(item => item.status === 'complete') } isVisible={ this.isVisible('complete') } />
             </div>
         )
     }

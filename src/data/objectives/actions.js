@@ -1,9 +1,21 @@
-import axios from 'axios'
+import '@firebase/firestore';
+import * as firebase from 'firebase';
 
 export function getObjectives() {
     return (dispatch) => {
-        axios.get('/objectives.json')
-            .then((response) => dispatch(getObjectivesSuccess(response.data.objectives)))
+
+        firebase.firestore().collection('objectives')
+            .get()
+            .then((querySnapshot) => {
+
+                let collection = [];
+                querySnapshot.forEach(doc => collection.push({ id: doc.id, ...doc.data()}));
+
+                dispatch(getObjectivesSuccess(collection));
+            })
+            .catch(function(error) {
+                console.log("Error getting documents: ", error);
+            });
     };
 }
 
@@ -14,14 +26,25 @@ export function getObjectivesSuccess(items) {
     };
 }
 
-export function getObjective() {
+export function getObjective(id) {
+
     return (dispatch) => {
-        axios.get('/objective.json')
-            .then((response) => dispatch(getObjectiveSuccess(response.data)))
+
+        const docRef = firebase.firestore().collection('objectives').doc(id);
+        docRef.get().then((doc) => {
+            if (doc.exists) {
+                dispatch(getObjectiveSuccess({id: doc.id, ...doc.data()}));
+            } else {
+                console.log("No such document!");
+            }
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+        });
     };
 }
 
 export function getObjectiveSuccess(item) {
+    
     return {
         type: 'GET_OBJECTIVE_SUCCESS',
         item
