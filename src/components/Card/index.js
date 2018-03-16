@@ -6,7 +6,7 @@ import './style.css'
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getObjective: () => dispatch(getObjective())
+        getObjective: (id) => dispatch(getObjective(id))
     };
 };
 
@@ -26,7 +26,7 @@ class CardFront extends React.Component {
                 <div className="date"></div>
                 <div className="card__title">{this.props.data.title}</div>
                 <div className="card__main-text">{this.props.data.description}</div>
-                <button onClick={() => this.props.getObjective()}>Get objective.</button>
+                <button onClick={() => this.props.getObjective(this.props.data.id)}>Get objective.</button>
             </div>
         )
     }
@@ -60,8 +60,8 @@ class Card extends React.Component {
         this.setState({showCardFront: false})
     }
 
-    getObjective() {
-        this.props.getObjective()
+    getObjective(id) {
+        this.props.getObjective(id)
     }
 
     render() {
