@@ -25,7 +25,6 @@ export function getObjectivesSuccess(items) {
 }
 
 export function getObjective(id) {
-
     return (dispatch) => {
 
         const docRef = firebase.firestore().collection('objectives').doc(id);
@@ -40,6 +39,10 @@ export function getObjective(id) {
             console.log("Error getting document:", error);
         });
     };
+}
+
+export function loadObjective(item) {
+    return (dispatch) => dispatch(getObjectiveSuccess(item))
 }
 
 export function getObjectiveSuccess(item) {
@@ -58,23 +61,23 @@ export function clearObjective() {
     };
 }
 
-export function createObjective(success) {
-    return (dispatch) => {
-        
-        const emptyObjective = {
-            status: 'draft',
-            title: null,
-            description: null,
-            dueDate: null,
-            sharedwith: [],
-            isNewlyCreated: true
-        }
+export function createTempObjective() {
+    return dispatch => dispatch(createObjectiveSuccess({
+        status: 'draft',
+        title: null,
+        description: null,
+        dueDate: null,
+        sharedwith: [],
+        isNewlyCreated: true
+    }))
+}
 
-        dispatch(createObjectiveSuccess(emptyObjective));
-        
+export function createObjective(item) {
+    item.isNewlyCreated = false;
+    return (dispatch) => {
         firebase.firestore().collection('objectives')
-            .add(emptyObjective)
-            .then(docRef => dispatch(createObjectiveSuccess({id: docRef.id, ...emptyObjective})))
+            .add(item)
+            .then(docRef => dispatch(createObjectiveSuccess({id: docRef.id, ...item})))
             .catch(function(error) {
                 console.error("Error adding document: ", error);
             });
@@ -110,4 +113,12 @@ export function updateObjectiveSuccess() {
             type: 'UPDATE_OBJECTIVE_SUCCESS'
         })
     };
+}
+
+export function saveObjective(item) {
+    if (item.isNewlyCreated) {
+        return createObjective(item)
+    } else {
+        return updateObjective(item)
+    }
 }

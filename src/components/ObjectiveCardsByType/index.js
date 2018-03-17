@@ -6,7 +6,7 @@ import './style.css'
 const ObjectiveCardsByDraft = (props) => 
     {if (props.isVisible) {
         return (
-            <div className="objective-cards-by-type objective-cards-by-type--draft mb-4">
+            <div className="objective-cards-by-type objective-cards-by-type--draft">
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-12"> 
@@ -17,11 +17,11 @@ const ObjectiveCardsByDraft = (props) =>
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-sm-3">
-                                        <button className="card card--create-objective" onClick={() => props.create()}>Create new objective.</button>
+                                    <div className="col-md-3">
+                                        <button className="card card--create-objective" onClick={() => props.create()}><span className="card--create-objective__label">Create new objective.</span></button>
                                     </div>
                                     {props.data.map((item) => (
-                                        <div className="col-sm-3" key={item.id}>
+                                        <div className="col-md-3" key={item.id}>
                                             <Card data={item} />
                                         </div>
                                     ))}
@@ -39,7 +39,7 @@ const ObjectiveCardsByDraft = (props) =>
 const ObjectiveCardsByInProgress = (props) => 
     {if (props.isVisible) {
         return (
-            <div className="objective-cards-by-type objective-cards-by-type--inProgress mb-4">
+            <div className="objective-cards-by-type objective-cards-by-type--inProgress">
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-12"> 
@@ -76,7 +76,7 @@ const ObjectiveCardsByComplete = (props) =>
                             <div className="objective-cards-by-type__inner">
                                 <div className="row">
                                     <div className="col-sm-12">
-                                        <h3 className="objective-cards-by-type__title">Complete.</h3>
+                                        <h3 className="objective-cards-by-type__title">Completed.</h3>
                                     </div>
                                 </div>
                                 <div className="row">

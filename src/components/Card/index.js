@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getObjective } from '../../data/objectives/actions'
+import { loadObjective } from '../../data/objectives/actions'
 
 import './style.css'
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getObjective: (id) => dispatch(getObjective(id))
+        loadObjective: (data) => dispatch(loadObjective(data))
     };
 };
 
@@ -21,12 +21,11 @@ class CardFront extends React.Component {
 
     render() {
         return (
-            <div className="card__front">
-                <div className="status"></div>
+            <div className="card__front card__clickable" onClick={() => this.props.loadObjective(this.props.data)}>
+                <div className={`card__status card__status--${this.props.data.status}`}></div>
                 <div className="date"></div>
                 <div className="card__title">{this.props.data.title}</div>
                 <div className="card__main-text">{this.props.data.description}</div>
-                <button onClick={() => this.props.getObjective(this.props.data.id)}>Get objective.</button>
             </div>
         )
     }
@@ -60,14 +59,14 @@ class Card extends React.Component {
         this.setState({showCardFront: false})
     }
 
-    getObjective(id) {
-        this.props.getObjective(id)
+    loadObjective(data) {
+        this.props.loadObjective(data)
     }
 
     render() {
         return (
             <div className="card mb-4">
-                {this.state.showCardFront ? <CardFront handleCardView={this.showCardBack} data={this.props.data} getObjective={this.getObjective.bind(this)} /> : <CardBack handleCardView={this.showCardFront} />}
+                {this.state.showCardFront ? <CardFront handleCardView={this.showCardBack} data={this.props.data} loadObjective={this.loadObjective.bind(this)} /> : <CardBack handleCardView={this.showCardFront} />}
             </div>
         )
     }

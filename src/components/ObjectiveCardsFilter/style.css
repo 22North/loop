@@ -1,3 +1,7 @@
+.objectives-status-filter {
+
+}
+
 .objectives-filter__inner {
     background-color: #cccccc;
     overflow: auto;
@@ -10,7 +14,7 @@
     cursor: pointer;
     font-weight: bold;
     outline: none;
-    padding: 10px 20px;
+    padding: 10px 20px 20px;
 }
 
 .objectives-status-filter__btn:focus {
@@ -37,3 +41,6 @@
     background-color: #cccccc;
 }
 
+.objectives-status-filter .nav-tabs {
+    border: 0;
+}
