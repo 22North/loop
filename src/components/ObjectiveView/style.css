@@ -15,7 +15,7 @@
 
 .objective-view__close {
     position: absolute;
-    right: 30px;
+    right: 15px;
     top: 15px;
     z-index: 1;
     background-image: url('/icon-close.svg');

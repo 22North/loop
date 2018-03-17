@@ -22,11 +22,12 @@ class CardFront extends React.Component {
     render() {
         return (
             <div className="card__front">
-                <div className="status"></div>
-                <div className="date"></div>
-                <div className="card__title">{this.props.data.title}</div>
-                <div className="card__main-text">{this.props.data.description}</div>
-                <button onClick={() => this.props.getObjective(this.props.data.id)}>Get objective.</button>
+                <div className="card__clickable" onClick={() => this.props.getObjective(this.props.data.id)}>
+                    <div className={`card__status card__status--${this.props.data.status}`}></div>
+                    <div className="date"></div>
+                    <div className="card__title">{this.props.data.title}</div>
+                    <div className="card__main-text">{this.props.data.description}</div>
+                </div>
             </div>
         )
     }
