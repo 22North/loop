@@ -1,8 +1,9 @@
 .card {
-    border: 1px solid black;
-    padding: 15px;
+    border-radius: 0;
     box-shadow: 2px 2px 5px 0px rgb(199, 199, 199);
     height: 270px;
+    padding: 15px;
+    text-align: left;
 }
 
 .card__title {
@@ -14,4 +15,10 @@
     margin-bottom: 5px;
     height: 100px;
     overflow: hidden;
+}
+
+.card--create-objective {
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
 }

@@ -1,4 +1,3 @@
-import './index.css';
 import '@firebase/firestore';
 import 'bootstrap/dist/css/bootstrap.css';
 import * as firebase from 'firebase';
@@ -10,6 +9,8 @@ import fireBaseConfig from './config'
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+
+import './index.css';
 
 firebase.initializeApp(fireBaseConfig);
 

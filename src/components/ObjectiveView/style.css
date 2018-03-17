@@ -1,7 +1,7 @@
 .objective-view {
     position: absolute;
     width: 100%;
-    top: 55px;
+    top: 0;
 }
 
 .objective-view__inner {
