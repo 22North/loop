@@ -66,7 +66,7 @@ class Card extends React.Component {
 
     render() {
         return (
-            <div className="card">
+            <div className="card mb-4">
                 {this.state.showCardFront ? <CardFront handleCardView={this.showCardBack} data={this.props.data} getObjective={this.getObjective.bind(this)} /> : <CardBack handleCardView={this.showCardFront} />}
             </div>
         )

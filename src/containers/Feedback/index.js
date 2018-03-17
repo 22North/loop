@@ -5,7 +5,7 @@ const Feedback = () =>
         <div className="container">
             <div className="row">
                 <div className="col-sm-12">
-                    <h2>{"General Feedback."}</h2>
+                    <h2 className="main-heading">{"General Feedback."}</h2>
                 </div>
             </div>    
         </div>

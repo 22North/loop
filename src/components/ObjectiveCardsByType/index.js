@@ -18,7 +18,7 @@ const ObjectiveCardsByDraft = (props) =>
                                 </div>
                                 <div className="row">
                                     <div className="col-sm-3">
-                                        <button onClick={() => props.create()}>Create new objective.</button>
+                                        <button className="card card--create-objective" onClick={() => props.create()}>Create new objective.</button>
                                     </div>
                                     {props.data.map((item) => (
                                         <div className="col-sm-3" key={item.id}>

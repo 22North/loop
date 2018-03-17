@@ -22,10 +22,9 @@ export function objective(state = INITIAL_STATE, action) {
                 ...state, 
                 objective: action.item
             }
-        case 'UPDATE_OBJECTIVE':
+        case 'UPDATE_OBJECTIVE_SUCCESS':
             return {
-                ...state, 
-                objective: action.item
+                ...state,
             }
         case 'CREATE_OBJECTIVE_SUCCESS':
             return {

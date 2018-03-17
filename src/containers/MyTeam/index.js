@@ -5,7 +5,7 @@ const MyTeam = () =>
         <div className="container">
             <div className="row">
                 <div className="col-sm-12">
-                    <h2>{"My Team."}</h2>
+                    <h2 className="main-heading">{"My Team."}</h2>
                 </div>
             </div>    
         </div>

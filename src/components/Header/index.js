@@ -5,7 +5,7 @@ import './style.css'
 
 const Header = (props) => 
     <header className="header">
-
+        <div className="header__mask"></div>
         <div className="container">
             <div className="row">
                 <div className="col-sm-6">
@@ -15,9 +15,9 @@ const Header = (props) =>
                 </div>
                 <div className="col-sm-6">
                     <ul className="main-navigation">
-                        <li className="main-navigation__item float-left"><NavLink to="/objectives" activeClassName="active" className="main-navigation__link">{"Objectives"}</NavLink></li>
-                        <li className="main-navigation__item float-left"><NavLink to="/feedback" activeClassName="active" className="main-navigation__link">{"Feedback"}</NavLink></li>
-                        <li className="main-navigation__item float-left"><NavLink to="/my-team" activeClassName="active" className="main-navigation__link">{"My Team."}</NavLink></li>
+                        <li className="main-navigation__item"><NavLink to="/objectives" activeClassName="active" className="main-navigation__link">{"Objectives"}</NavLink></li>
+                        <li className="main-navigation__item"><NavLink to="/feedback" activeClassName="active" className="main-navigation__link">{"Feedback"}</NavLink></li>
+                        <li className="main-navigation__item"><NavLink to="/my-team" activeClassName="active" className="main-navigation__link">{"My Team."}</NavLink></li>
                     </ul>
                     <div className="avatar">
 
