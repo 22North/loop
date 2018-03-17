@@ -76,7 +76,7 @@ const ObjectiveCardsByComplete = (props) =>
                             <div className="objective-cards-by-type__inner">
                                 <div className="row">
                                     <div className="col-sm-12">
-                                        <h3 className="objective-cards-by-type__title">Complete.</h3>
+                                        <h3 className="objective-cards-by-type__title">Completed.</h3>
                                     </div>
                                 </div>
                                 <div className="row">
