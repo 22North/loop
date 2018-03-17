@@ -1,3 +1,8 @@
+.objective-cards-by-type {
+    position: relative;
+    top: -10px;
+}
+
 .objective-cards-by-type__inner {
     background-color: #eee;
     border-radius: 10px;

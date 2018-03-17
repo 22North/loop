@@ -57,7 +57,9 @@ class ObjectiveView extends React.Component {
         return (
             <div className="row mb-4">
                 <div className="col-sm-12">
-                    { this.props.data.isNewlyCreated ? <div><span>Create objective: </span><span>{ this.props.data.status }</span></div> : <div><span>Objective status: </span><span>{ this.props.data.status }</span></div> }
+                    
+                    { this.props.data.isNewlyCreated ? <div className="objective-view__status-label"><span>Create objective: </span><span>{ this.props.data.status }</span></div> : <div><span>Objective status: </span><span>{ this.props.data.status }</span></div> }
+                    
                 </div>
             </div>
         )
@@ -76,7 +78,7 @@ class ObjectiveView extends React.Component {
         return (
             <div className="row">
                 <div className="col-sm-12">
-                    <button onClick={ () => this.props.update(this.props.data) }>Save.</button>
+                    <button className="objective-view__btn objective-view__btn--save" onClick={ () => this.props.update(this.props.data) }>Save Objective.</button>
                 </div>
             </div>
         )

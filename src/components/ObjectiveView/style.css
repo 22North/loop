@@ -16,6 +16,28 @@
 .objective-view__close {
     position: absolute;
     right: 30px;
-    top: 30px;
+    top: 15px;
     z-index: 1;
+    background-image: url('/icon-close.svg');
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    text-indent: -9999px;
+    border: 0;
+}
+
+.objective-view__btn {
+    border-radius: 25px;
+}
+
+.objective-view__btn--save {
+    background-color: #000000;
+    border: 2px solid #000000;
+    color: #ffffff;
+    padding: 5px 30px;
+}
+
+.objective-view__btn--save:hover {
+    background-color: #ffffff;
+    color: #000000;
 }
