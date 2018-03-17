@@ -1,7 +1,5 @@
 .header {
     height: 100px;
-    display: flex;
-    align-items: center;
     position: relative;
 }
 
@@ -16,7 +14,9 @@
 }
 
 .header__logo {
+    height: 100px;
     width: 100px;
+    line-height: 100px;
 }
 
 .header__logo img {
@@ -28,6 +28,8 @@
 }
 
 .main-navigation {
+    display: inline-block;
+    float: right;
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
@@ -45,8 +47,9 @@
 
 .main-navigation__link {
     color: #dddddd;
+    display: block;
+    line-height: 100px;
     height: 100px;
-    
 }
 
 .main-navigation__link:hover {
