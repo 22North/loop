@@ -2,7 +2,7 @@ import React from 'react'
 import { ObjectiveCards } from '../../components'
 import { ObjectiveView } from '../../components'
 import { connect } from 'react-redux';
-import { createObjective, getObjectives, updateObjective, clearObjective } from '../../data/objectives/actions'
+import { createObjective, createTempObjective, getObjectives, saveObjective, clearObjective } from '../../data/objectives/actions'
 
 import './style.css'
 
@@ -15,9 +15,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createObjective: () => dispatch(createObjective()),
+        createObjective: (data) => dispatch(createObjective(data)),
+        createTempObjective: ()=> dispatch(createTempObjective()),
         getObjectives: () => dispatch(getObjectives()),
-        updateObjective: (data) => dispatch(updateObjective(data)),
+        saveObjective: (data) => dispatch(saveObjective(data)),
         clearObjective: () => dispatch(clearObjective()),
     };
 };
@@ -30,7 +31,7 @@ class Objectives extends React.Component {
 
     renderObjectiveView() {
         return this.props.objective !== null
-            ? <ObjectiveView data={ this.props.objective } close={ this.props.clearObjective } update={ this.props.updateObjective } />
+            ? <ObjectiveView data={ this.props.objective } close={ this.props.clearObjective } save={ this.props.saveObjective } />
             : null
     }
 
@@ -45,7 +46,7 @@ class Objectives extends React.Component {
                     </div>    
                 </div>
                 <div className="objectives-container">
-                    <ObjectiveCards data={ this.props.objectives } create={ this.props.createObjective } />
+                    <ObjectiveCards data={ this.props.objectives } create={ this.props.createTempObjective } />
                     { this.renderObjectiveView() }
                 </div>
             </div>      

@@ -78,7 +78,7 @@ class ObjectiveView extends React.Component {
         return (
             <div className="row">
                 <div className="col-sm-12">
-                    <button className="objective-view__btn objective-view__btn--save" onClick={ () => this.props.update(this.props.data) }>Save Objective.</button>
+                    <button className="objective-view__btn objective-view__btn--save" onClick={ () => this.props.save(this.props.data) }>Save Objective.</button>
                 </div>
             </div>
         )
