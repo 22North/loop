@@ -2,7 +2,7 @@ import React from 'react'
 import { ObjectiveCards } from '../../components'
 import { ObjectiveView } from '../../components'
 import { connect } from 'react-redux';
-import { createObjective, createTempObjective, getObjectives, saveObjective, clearObjective } from '../../data/objectives/actions'
+import { createObjective, createTempObjective, getObjectives, saveObjective, clearObjective, addToSharedWith } from '../../data/objectives/actions'
 
 import './style.css'
 
@@ -20,6 +20,7 @@ const mapDispatchToProps = (dispatch) => {
         getObjectives: () => dispatch(getObjectives()),
         saveObjective: (data) => dispatch(saveObjective(data)),
         clearObjective: () => dispatch(clearObjective()),
+        addToSharedWith: (userId) => dispatch(addToSharedWith(userId))
     };
 };
 
@@ -31,7 +32,7 @@ class Objectives extends React.Component {
 
     renderObjectiveView() {
         return this.props.objective !== null
-            ? <ObjectiveView data={ this.props.objective } close={ this.props.clearObjective } save={ this.props.saveObjective } />
+            ? <ObjectiveView data={ this.props.objective } close={ this.props.clearObjective } save={ this.props.saveObjective } addToSharedWith={ this.props.addToSharedWith } />
             : null
     }
 
