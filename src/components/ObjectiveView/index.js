@@ -1,5 +1,6 @@
 
 import React from 'react'
+import SearchUsers from '../SearchUsers'
 
 import './style.css'
 
@@ -84,6 +85,37 @@ class ObjectiveView extends React.Component {
         )
     }
 
+    onUserClick(user) {
+        this.props.addToSharedWith(user.id)
+    }
+
+    renderAddUserToObjective() {
+        return (
+            <div>
+                <div className="row">
+                    <div className="col-sm-12">
+                        Shared with:
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-12">
+                        <SearchUsers onUserClick={this.onUserClick.bind(this)} />
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    renderAddedUsers() {
+        return (
+            <div>
+                <ul>
+                    { this.props.data.sharedwith.map( (user) => <li key={ user }>{ user }</li> ) }
+                </ul>
+            </div>
+        )
+    }
+    
     render() {
         return (
             <div className="objective-view">
@@ -98,6 +130,10 @@ class ObjectiveView extends React.Component {
                                 { this.renderTitleAndDescription() }
                                 
                                 { this.renderCallToAction() }
+
+                                { this.renderAddUserToObjective() }
+
+                                { this.renderAddedUsers() }
 
                             </div>
                         </div>

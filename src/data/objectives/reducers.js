@@ -36,6 +36,23 @@ export function objective(state = INITIAL_STATE, action) {
                 ...state, 
                 objective: null
             }
+        case 'ADD_TO_SHARED_WITH':
+
+            let objective = { ...state.objective }
+
+            if (objective.sharedwith.indexOf(action.userId) === -1) {
+                objective.sharedwith.push(action.userId)
+            }
+
+            return {
+                ...state,
+                objective 
+            }
+        case 'REMOVE_FROM_SHARED_WITH':
+
+            return {
+                ...state
+            }
         default:
             return state
     }

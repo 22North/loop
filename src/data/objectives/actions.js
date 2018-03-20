@@ -122,3 +122,12 @@ export function saveObjective(item) {
         return updateObjective(item)
     }
 }
+
+export function addToSharedWith(userId) {
+    return (dispatch) => {
+        dispatch({
+            type: 'ADD_TO_SHARED_WITH',
+            userId: userId
+        })
+    };
+}
