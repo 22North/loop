@@ -1,6 +1,7 @@
 import React from 'react'
 import { ObjectiveCards } from '../../components'
 import { ObjectiveView } from '../../components'
+import UserChip from '../../components/UserChip'
 import { connect } from 'react-redux';
 import { createObjective, createTempObjective, getObjectives, saveObjective, clearObjective, addToSharedWith } from '../../data/objectives/actions'
 
@@ -39,6 +40,9 @@ class Objectives extends React.Component {
     render() {
         return (
             <div className="main-container main-container--objectives">
+                <UserChip actionId="jBChpOuxxid6veBCyv8n" userId="jBChpOuxxid6veBCyv8n" />
+                ---
+                <UserChip actionId="1GcHC5nPqrcoLEjVwo8n" userId="1GcHC5nPqrcoLEjVwo8n" />
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-12">
