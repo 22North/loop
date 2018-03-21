@@ -33,7 +33,12 @@ class SearchUsers extends React.Component {
 
     renderUsersFiltered() {
         if (this.props.users) {
-            return this.props.users.map(user => <li key={user.id} onClick={ () => { this.props.onUserClick(user) } }>{`${user.firstname} ${user.surname}`}</li>)
+            return (
+                <ul>
+                    { this.props.users.map(user => <li key={user.id} onClick={ () => { this.props.onUserClick(user) } }>{`${user.firstname} ${user.surname}`}</li>) }
+                </ul>
+            )
+                
         } else {
             return false;
         }
@@ -42,7 +47,7 @@ class SearchUsers extends React.Component {
     render() {
         return (
             <div>
-                <input type="text" onChange={this.props.filterUsersByName} />
+                <input className="d-none" type="text" onChange={this.props.filterUsersByName} />
                 { this.renderUsersFiltered() }
             </div>
         )

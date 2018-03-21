@@ -2,8 +2,16 @@
 import React from 'react'
 import SearchUsers from '../SearchUsers'
 import UserChip from '../../components/UserChip'
+import { changeObjectiveStatus } from '../../data/objectives/actions'
+import { connect } from 'react-redux';
 
 import './style.css'
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeObjectiveStatus: (value) => dispatch(changeObjectiveStatus(value))
+    };
+};
 
 const ObjectiveViewEditText = (props) =>
     <div className={ !props.showEditFields ? "d-none" : null }>
@@ -21,6 +29,7 @@ const ObjectiveViewEditText = (props) =>
 
 const ObjectViewSavedText = (props) =>
     <div className={ props.showEditFields ? "d-none" : null }>
+        <button className="objective-view__toggle-button objective-view__toggle-button--edit" onClick={ () => props.showEditFieldsHandle() }>edit.</button>
         <div className="row">
             <div className="col-sm-12">
                 <h2 className="objective-view__title">
@@ -37,7 +46,7 @@ const ObjectViewSavedText = (props) =>
         </div>
         <div className="row mb-4">
             <div className="col-sm-12">
-                <button onClick={ () => props.showEditFieldsHandle() }>edit.</button>
+                
             </div>
         </div>
     </div>
@@ -51,6 +60,14 @@ class ObjectiveView extends React.Component {
         };
     }
 
+    addToSharedWith(user) {
+        this.props.addToSharedWith(user.id)
+    }
+
+    changeStatus(value) {
+        this.props.changeObjectiveStatus(value)
+    }
+
     showEditFieldsHandle() {
         this.setState({ showEditFields: true })
     }
@@ -60,16 +77,26 @@ class ObjectiveView extends React.Component {
             <div className="row mb-4">
                 <div className="col-sm-12">
                     
-                    { this.props.data.isNewlyCreated ? <div className="objective-view__status-label"><span>Create objective: </span><span>{ this.props.data.status }</span></div> : <div><span>Objective status: </span><span>{ this.props.data.status }</span></div> }
+                    { this.props.data.isNewlyCreated ? <div><span className="objective-view__status-label">Create objective: </span><span>{ this.props.data.status }</span></div> : <div><span className="objective-view__status-label">Objective status: </span><span>{ this.props.data.status }</span></div> }
                     
                 </div>
             </div>
         )
     }
 
+    renderStatusDropdown() {
+        return (
+            <select className={`objective-view__status-select ${this.props.data.status}`} onChange={(e) => this.changeStatus(e.target.value)}>
+                <option value="draft" selected={this.props.data.status === 'draft'}>Change status: Draft</option>
+                <option value="inProgress" selected={this.props.data.status === 'inProgress'}>Change status: In progress</option>
+                <option value="complete" selected={this.props.data.status === 'complete'}>Change status: Completed.</option>
+            </select>
+        )
+    }
+
     renderTitleAndDescription() {
         return (
-            <div>
+            <div className="objective-view__section">
                 <ObjectiveViewEditText data={ this.props.data } showEditFields={ this.props.data.isNewlyCreated || this.state.showEditFields } />
                 <ObjectViewSavedText data={ this.props.data } showEditFields={ this.props.data.isNewlyCreated || this.state.showEditFields } showEditFieldsHandle={ this.showEditFieldsHandle.bind(this) } />
             </div>
@@ -86,32 +113,43 @@ class ObjectiveView extends React.Component {
         )
     }
 
-    onUserClick(user) {
-        this.props.addToSharedWith(user.id)
-    }
-
-    renderAddUserToObjective() {
+    renderAddedUsers() {
         return (
-            <div>
+            <div className="objective-view__shared-with-list">
                 <div className="row">
                     <div className="col-sm-12">
-                        Shared with:
+                        <h3 className="objective-view__heading">Working on the objective with:</h3>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-sm-12">
-                        <SearchUsers onUserClick={this.onUserClick.bind(this)} />
-                    </div>
+                <div className="row">  
+                    { this.props.data.sharedwith.map( (userId) => <div className="col-md-3" key={ userId }><UserChip actionId={ userId } userId={ userId } /></div> ) }
                 </div>
             </div>
         )
     }
 
-    renderAddedUsers() {
+    renderSharedWith() {
         return (
-            <div className="objective-view__shared-with-list">
-                <div className="row">  
-                    { this.props.data.sharedwith.map( (userId) => <div className="col-md-3" key={ userId }><UserChip actionId={ userId } userId={ userId } /></div> ) }
+            <div className="objective-view__section">
+                <button className="objective-view__toggle-button objective-view__toggle-button--edit">edit.</button>
+                { this.renderAddedUsers() }
+                { this.renderAddUserToObjective() }
+            </div>
+        )
+    }
+
+    renderAddUserToObjective() {
+        return (
+            <div className="objective-view__users-to-add">
+                <div className="row">
+                    <div className="col-sm-12">
+                        <h4 className="objective-view__sub-heading">Select a user to share the objective with:</h4>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-12">
+                        <SearchUsers onUserClick={this.addToSharedWith.bind(this)} />
+                    </div>
                 </div>
             </div>
         )
@@ -126,13 +164,21 @@ class ObjectiveView extends React.Component {
                             <div className="objective-view__inner">
                                 <button className="objective-view__close" onClick={ () => this.props.close() }>close</button>
                                 
+                               
+
                                 { this.renderStatusHeader() }
 
-                                { this.renderTitleAndDescription() }
-                                
-                                { this.renderAddUserToObjective() }
+                                { this.renderStatusDropdown() }
+                                 
+                                <div className="objective-view__hr"></div>
 
-                                { this.renderAddedUsers() }
+                                { this.renderTitleAndDescription() }
+
+                                <div className="objective-view__hr"></div>
+                                
+                                { this.renderSharedWith() }
+
+                                <div className="objective-view__hr"></div>
 
                                 { this.renderCallToAction() }
 
@@ -145,4 +191,4 @@ class ObjectiveView extends React.Component {
     }
 }
 
-export default ObjectiveView
+export default connect(null, mapDispatchToProps)(ObjectiveView)

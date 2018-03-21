@@ -16,6 +16,7 @@ export function objectives(state = INITIAL_STATE, action) {
 }
 
 export function objective(state = INITIAL_STATE, action) {
+
     switch (action.type) {
         case 'GET_OBJECTIVE_SUCCESS':
             return {
@@ -52,6 +53,12 @@ export function objective(state = INITIAL_STATE, action) {
 
             return {
                 ...state
+            }
+        case 'CHANGE_OBJECTIVE_STATUS':
+
+            return {
+                ...state,
+                objective: { ...state.objective, status: action.value }
             }
         default:
             return state
