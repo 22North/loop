@@ -1,8 +1,9 @@
 import React from 'react'
-import { getUser } from '../../data/users/actions'
+import { getUser } from '../../data/user/actions'
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state, ownProps) => {
+    console.log(state);
     return {
         user: state.user[ownProps.actionId]
     };
@@ -22,9 +23,8 @@ class UserChip extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="user-chip">
                 <div className="avatar"></div>
-                jghjjhghjgj
                 <div className="Name">
                     <span>{this.props.user ? this.props.user.firstname : null}</span>
                 </div>

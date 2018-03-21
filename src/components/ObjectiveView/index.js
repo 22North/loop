@@ -1,6 +1,7 @@
 
 import React from 'react'
 import SearchUsers from '../SearchUsers'
+import UserChip from '../../components/UserChip'
 
 import './style.css'
 
@@ -110,7 +111,7 @@ class ObjectiveView extends React.Component {
         return (
             <div>
                 <ul>
-                    { this.props.data.sharedwith.map( (user) => <li key={ user }>{ user }</li> ) }
+                    { this.props.data.sharedwith.map( (userId) => <li key={ userId }><UserChip actionId={ userId } userId={ userId } /></li> ) }
                 </ul>
             </div>
         )
