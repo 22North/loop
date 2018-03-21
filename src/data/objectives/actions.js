@@ -131,3 +131,12 @@ export function addToSharedWith(userId) {
         })
     };
 }
+
+export function changeObjectiveStatus(value) {
+    return (dispatch) => {
+        dispatch({
+            type: 'CHANGE_OBJECTIVE_STATUS',
+            value: value
+        })
+    };
+}

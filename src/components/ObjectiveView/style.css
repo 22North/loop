@@ -15,8 +15,8 @@
 
 .objective-view__close {
     position: absolute;
-    right: 15px;
-    top: 15px;
+    right: 30px;
+    top: 30px;
     z-index: 1;
     background-image: url('/icon-close.svg');
     background-size: cover;
@@ -40,4 +40,93 @@
 .objective-view__btn--save:hover {
     background-color: #ffffff;
     color: #000000;
+}
+
+.objective-view__status-label {
+    font-size: 44px;
+}
+
+.objective-view__status-select {
+    
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #ffffff;
+    padding: 10px 15px;    
+}
+
+.objective-view__status-select.draft {
+    background-color: #aaaaaa;
+}
+
+.objective-view__status-select.inProgress {
+    background-color: #007BC3;
+}
+.objective-view__status-select.complete {
+    background-color: green;
+}
+
+.objective-view__title {
+    font-weight: bold;
+    margin-right: 40px;
+}
+
+.objective-view__heading {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.objective-view__sub-heading {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.objective-view__hr {
+    background-color: #cccccc;
+    height: 1px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.objective-view__section {
+    position: relative;
+}
+
+.objective-view__toggle-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    text-indent: -9999px;
+    border: 0;
+    background-size: cover;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.objective-view__toggle-button--edit {
+    background-image: url('/icon-add.svg');
+}
+
+.objective-view__users-to-add {
+    padding: 15px 0;
+}
+
+.objective-view__users-to-add ul {
+    border: 1px solid #cccccc;
+    border-bottom: 0;
+    padding: 0;
+    margin-left: 30px;
+}
+
+.objective-view__users-to-add ul li {
+    border-bottom: 1px solid #cccccc;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.objective-view__users-to-add ul li:hover {
+    text-decoration: underline;
 }

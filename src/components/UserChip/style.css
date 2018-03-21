@@ -3,6 +3,7 @@
     overflow: auto;
     padding: 10px;
     margin-bottom: 1px;
+    position: relative;
 }
 
 .user-chip__avatar {
@@ -11,8 +12,12 @@
     float: left;
     height: 30px;
     width: 30px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 }
 
 .user-chip__details {
-    
+    margin-left: 40px;
 }
