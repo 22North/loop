@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
-import { objectives, objective } from './objectives/reducers'
+import { objective, objectives } from './objectives/reducers'
+import { user } from './user/reducers'
 import { users } from './users/reducers'
 
 export default combineReducers({
-    objectives,
     objective,
-    users
+    objectives,
+    user,
+    users,
 });
