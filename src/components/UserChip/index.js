@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import './style.css'
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state);
     return {
         user: state.user[ownProps.actionId]
     };
