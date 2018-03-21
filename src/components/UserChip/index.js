@@ -26,7 +26,7 @@ class UserChip extends React.Component {
             <div className="user-chip">
                 <div className="avatar"></div>
                 <div className="Name">
-                    <span>{this.props.user ? this.props.user.firstname : null}</span>
+                    {this.props.user ? <span>{`${this.props.user.firstname} ${this.props.user.surname}`}</span> : null}
                 </div>
             </div>
         )
