@@ -2,6 +2,8 @@ import React from 'react'
 import { getUser } from '../../data/user/actions'
 import { connect } from 'react-redux';
 
+import './style.css'
+
 const mapStateToProps = (state, ownProps) => {
     console.log(state);
     return {
@@ -21,13 +23,25 @@ class UserChip extends React.Component {
         this.props.getUser(this.props.userId)
     }
 
+    renderUserChip() {
+        if (this.props.user) {
+            return (
+                <div className="user-chip">
+                    <div className="user-chip__avatar"></div>
+                    <div className="user-chip__details">
+                        <span>{`${this.props.user.firstname} ${this.props.user.surname}`}</span>
+                    </div>
+                </div>
+            )
+        } else {
+            return null;
+        }
+    }
+
     render() {
         return (
-            <div className="user-chip">
-                <div className="avatar"></div>
-                <div className="Name">
-                    {this.props.user ? <span>{`${this.props.user.firstname} ${this.props.user.surname}`}</span> : null}
-                </div>
+            <div>
+                { this.renderUserChip() }
             </div>
         )
     }

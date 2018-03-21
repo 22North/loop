@@ -109,10 +109,10 @@ class ObjectiveView extends React.Component {
 
     renderAddedUsers() {
         return (
-            <div>
-                <ul>
-                    { this.props.data.sharedwith.map( (userId) => <li key={ userId }><UserChip actionId={ userId } userId={ userId } /></li> ) }
-                </ul>
+            <div className="objective-view__shared-with-list">
+                <div className="row">  
+                    { this.props.data.sharedwith.map( (userId) => <div className="col-md-3" key={ userId }><UserChip actionId={ userId } userId={ userId } /></div> ) }
+                </div>
             </div>
         )
     }
@@ -130,11 +130,11 @@ class ObjectiveView extends React.Component {
 
                                 { this.renderTitleAndDescription() }
                                 
-                                { this.renderCallToAction() }
-
                                 { this.renderAddUserToObjective() }
 
                                 { this.renderAddedUsers() }
+
+                                { this.renderCallToAction() }
 
                             </div>
                         </div>
