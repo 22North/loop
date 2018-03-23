@@ -13,6 +13,24 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
+const ObjectiveViewMyComments = (props) => {
+    return (
+        <div className="objective-view__my-comments">
+            <div className="row">
+                <div className="col-sm-12">
+                    <h3 className="objective-view__heading">Objective complete.</h3>
+                    <h4 className="objective-view__sub-heading">So how do you think you did?</h4>
+                </div>
+            </div>
+            <div className="row mb-4">
+                <div className="col-sm-12">
+                    <textarea className="form-control" placeholder="Comments..."></textarea>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 const ObjectiveViewEditText = (props) =>
     <div className={ !props.showEditFields ? "d-none" : null }>
         <div className="row mb-4">
@@ -154,6 +172,29 @@ class ObjectiveView extends React.Component {
             </div>
         )
     }
+
+    renderMainView() {
+        return (
+            <div className={ this.props.data.status !== 'complete' ? 'd-block'  : 'd-none' }>
+                { this.renderStatusHeader() }
+                { this.renderStatusDropdown() }
+                <div className="objective-view__hr"></div>
+                { this.renderTitleAndDescription() }
+                <div className="objective-view__hr"></div>
+                { this.renderSharedWith() }
+                <div className="objective-view__hr"></div>
+                
+            </div>
+        )
+    }
+
+    renderMyCommentsView() {
+        return (
+            <div className={ this.props.data.status === 'complete' ? 'd-block' : 'd-none' }>
+                <ObjectiveViewMyComments data={ this.props.data } />
+            </div>
+        )
+    }
     
     render() {
         return (
@@ -163,25 +204,9 @@ class ObjectiveView extends React.Component {
                         <div className="col-sm-12">
                             <div className="objective-view__inner">
                                 <button className="objective-view__close" onClick={ () => this.props.close() }>close</button>
-                                
-                               
-
-                                { this.renderStatusHeader() }
-
-                                { this.renderStatusDropdown() }
-                                 
-                                <div className="objective-view__hr"></div>
-
-                                { this.renderTitleAndDescription() }
-
-                                <div className="objective-view__hr"></div>
-                                
-                                { this.renderSharedWith() }
-
-                                <div className="objective-view__hr"></div>
-
+                                { this.renderMainView() }
+                                { this.renderMyCommentsView() }
                                 { this.renderCallToAction() }
-
                             </div>
                         </div>
                     </div>

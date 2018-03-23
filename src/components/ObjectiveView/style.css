@@ -130,3 +130,12 @@
 .objective-view__users-to-add ul li:hover {
     text-decoration: underline;
 }
+
+.objective-view__my-comments {
+    display: block;
+}
+
+.objective-view__my-comments .objective-view__heading {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
