@@ -3,7 +3,7 @@ import React from 'react'
 import SearchUsers from '../SearchUsers'
 import UserChip from '../../components/UserChip'
 import { changeObjectiveStatus } from '../../data/objectives/actions'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
 import './style.css'
 
@@ -24,7 +24,7 @@ const ObjectiveViewMyComments = (props) => {
             </div>
             <div className="row mb-4">
                 <div className="col-sm-12">
-                    <textarea className="form-control" placeholder="Comments..."></textarea>
+                    <textarea className="form-control" defaultValue={ props.data.comments } placeholder="Comments..." onChange={ (e) => props.data.comments = e.target.value }></textarea>
                 </div>
             </div>
         </div>
@@ -74,7 +74,8 @@ class ObjectiveView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showEditFields: false
+            showEditFields: false,
+            showFeedbackForm: false
         };
     }
 
@@ -84,10 +85,14 @@ class ObjectiveView extends React.Component {
 
     changeStatus(value) {
         this.props.changeObjectiveStatus(value)
+
+        if (value === 'complete') {
+            this.setState({ ...this.state, showFeedbackForm: true })
+        }
     }
 
     showEditFieldsHandle() {
-        this.setState({ showEditFields: true })
+        this.setState({ ...this.state, showEditFields: true })
     }
 
     renderStatusHeader() {
@@ -175,7 +180,7 @@ class ObjectiveView extends React.Component {
 
     renderMainView() {
         return (
-            <div className={ this.props.data.status !== 'complete' ? 'd-block'  : 'd-none' }>
+            <div className={ this.state.showFeedbackForm === false ? 'd-block'  : 'd-none' }>
                 { this.renderStatusHeader() }
                 { this.renderStatusDropdown() }
                 <div className="objective-view__hr"></div>
@@ -190,7 +195,7 @@ class ObjectiveView extends React.Component {
 
     renderMyCommentsView() {
         return (
-            <div className={ this.props.data.status === 'complete' ? 'd-block' : 'd-none' }>
+            <div className={ this.state.showFeedbackForm === true ? 'd-block' : 'd-none' }>
                 <ObjectiveViewMyComments data={ this.props.data } />
             </div>
         )

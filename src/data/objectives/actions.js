@@ -68,6 +68,7 @@ export function createTempObjective() {
         description: null,
         dueDate: null,
         sharedwith: [],
+        comments: null,
         isNewlyCreated: true
     }))
 }
