@@ -24,7 +24,7 @@ const ObjectiveViewMyComments = (props) => {
             </div>
             <div className="row mb-4">
                 <div className="col-sm-12">
-                    <textarea className="form-control" defaultValue={ props.data.comments } placeholder="Comments..." onChange={ (e) => props.data.comments = e.target.value }></textarea>
+                    <textarea className="form-control" defaultValue={ props.data.feedback } placeholder="Comments..." onChange={ (e) => props.data.feedback = e.target.value }></textarea>
                 </div>
             </div>
         </div>
