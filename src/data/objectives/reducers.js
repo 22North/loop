@@ -26,6 +26,7 @@ export function objective(state = INITIAL_STATE, action) {
         case 'UPDATE_OBJECTIVE_SUCCESS':
             return {
                 ...state,
+                objective: null
             }
         case 'CREATE_OBJECTIVE_SUCCESS':
             return {
