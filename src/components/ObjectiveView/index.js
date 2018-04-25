@@ -33,6 +33,13 @@ const ObjectiveViewMyComments = (props) => {
 
 const ObjectiveViewEditText = (props) =>
     <div className={ !props.showEditFields ? "d-none" : null }>
+
+        <div className="row mb-4">
+            <div className="col-sm-12">
+                <input  />
+            </div>
+        </div>
+
         <div className="row mb-4">
             <div className="col-sm-12">
                 <input className="form-control" type="text" defaultValue={ props.data.title } onChange={ (e) => props.data.title = e.target.value } />
