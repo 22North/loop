@@ -51,7 +51,7 @@ const ObjectiveViewEditText = (props) =>
         <div className="row mb-4">
             <div className="col-sm-12">
                 <label className="objective-view__form-label" for="objDescription">Description.</label>
-                <span className="objective-view__form-note">This isn't visible to anyone other than your manager.</span>
+                <span className="objective-view__form-note">{"This isn't visible to anyone other than your manager"}.</span>
                 <textarea className="form-control" id="objDescription" defaultValue={ props.data.description } onChange={ (e) => props.data.description = e.target.value } />
             </div>
         </div>
@@ -196,7 +196,7 @@ class ObjectiveView extends React.Component {
     renderSharedWith() {
         return (
             <div className="objective-view__section">
-                <button className="objective-view__toggle-button objective-view__toggle-button--edit" onClick={ () => this.showSharedWithEditviewHandle() }>edit.</button>
+                { this.props.data.sharedwith.length > 0 ? <button className="objective-view__toggle-button objective-view__toggle-button--edit" onClick={ () => this.showSharedWithEditviewHandle() }>edit.</button> : null } 
                 { this.renderSharedWithEditView() }
                 { this.renderAddedUsers() }
             </div>
