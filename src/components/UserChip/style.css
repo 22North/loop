@@ -1,5 +1,4 @@
 .user-chip {
-    border: 1px solid #cccccc;
     overflow: auto;
     padding: 10px;
     margin-bottom: 1px;
@@ -20,4 +19,13 @@
 
 .user-chip__details {
     margin-left: 40px;
+}
+
+.user-chip__name {
+    display: block;
+    font-weight: bold;
+}
+
+.user-chip__role {
+    display: block;
 }
