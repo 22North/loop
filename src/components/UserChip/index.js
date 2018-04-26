@@ -28,7 +28,8 @@ class UserChip extends React.Component {
                 <div className="user-chip">
                     <div className="user-chip__avatar"></div>
                     <div className="user-chip__details">
-                        <span>{`${this.props.user.firstname} ${this.props.user.surname}`}</span>
+                        <span className="user-chip__name">{`${this.props.user.firstname} ${this.props.user.surname}`}</span>
+                        <span className="user-chip__role">job role.</span>
                     </div>
                 </div>
             )

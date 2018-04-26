@@ -64,10 +64,12 @@ export function clearObjective() {
 export function createTempObjective() {
     return dispatch => dispatch(createObjectiveSuccess({
         status: 'draft',
+        dueDate: null,
         title: null,
         description: null,
         dueDate: null,
         sharedwith: [],
+        feedback: null,
         isNewlyCreated: true
     }))
 }
