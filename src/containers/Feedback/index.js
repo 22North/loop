@@ -7,16 +7,34 @@ class Feedback extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedUser: null,
-            selectedRating: null
+            user: null,
+            comments: '',
+            rating: null,
         };
+
+        this.onStarRatingClick = this.onStarRatingClick.bind(this);
+        this.onCommentsChange = this.onCommentsChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onStarRatingClick(rating) {
-        this.setState({...this.state, selectedRating: rating})
+        this.setState({ ...this.state, rating: rating })
     }
 
-    render() {
+    onCommentsChange(e) {
+        console.log(e.target.value);
+        this.setState({...this.state, comments: e.target.value})
+    }
+
+    onSubmit(e) {
+        console.log(this.state.user);
+        console.log(this.state.comments);
+        console.log(this.state.rating);
+        e.preventDefault();
+    }
+
+
+    renderFeedbackForm() {
         return (
             <div className="main-container main-container--feedback">
                 <div className="container">
@@ -30,20 +48,44 @@ class Feedback extends React.Component {
                         <div className="col-sm-12">
 
                             <div className="general-feedback-form">
-                                <form>
+                                <form onSubmit={this.onSubmit}>
+
                                     Your feedback.
+                                
                                     <p>Let them know what they should stop/start/continue to do.</p>
-                                    <textarea placeholder="Comments..."></textarea>
+                                    <textarea placeholder="Comments..." value={ this.state.comments } onChange={ this.onCommentsChange } />
                                     <p>How likely are you to recommend them out of 5.</p>
-                                    <StarRating onClick={this.onStarRatingClick.bind(this)} />
-                                    <button className="btn">Send.</button>
+                                    
+                                    <div className="mb-4">
+                                        <StarRating onClick={ this.onStarRatingClick } />
+                                    </div>
+
+                                    <input className="btn" type="submit" value="Send" />
                                 </form>
                             </div>
-
-                            
                         </div>
                     </div>
                 </div>
+            </div>
+        )
+    }
+
+    renderThankYou() {
+        return (
+            <div>
+                <span>Thank you, your feedback has been sent to...</span>
+                <span>{ this.state.user.firstname } { this.state.user.surname }</span>
+                <span>{ this.state.user.role }></span>
+                <button>More feedback.</button><button>Close.</button>
+            </div>
+        )
+    } 
+
+    render() {
+        return (
+            <div>
+                { this.props.showFeedbackForm ? this.renderFeedbackForm : null }
+                { this.props.showThankYou ? this.renderThankYou :  null }
             </div>
         )
     }

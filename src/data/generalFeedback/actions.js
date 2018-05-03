@@ -1,27 +1,23 @@
 import '@firebase/firestore';
 import * as firebase from 'firebase';
 
-export function getUser(actionId, id) {
+export function createFeedback(item) {
+    item.isNewlyCreated = false;
     return (dispatch) => {
-
-        const docRef = firebase.firestore().collection('users').doc(id);
-
-        docRef.get().then((doc) => {
-            if (doc.exists) {
-                dispatch(getUserSuccess(actionId, {id: doc.id, ...doc.data()}));
-            } else {
-                console.log("No such document!");
-            }
-        }).catch(function(error) {
-            console.log("Error getting document:", error);
-        });
-    };
+        firebase.firestore().collection('feedback')
+            .add(item)
+            .then(docRef => dispatch(createFeedbackSuccess({id: docRef.id, ...item})))
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
+    }
 }
 
-export function getUserSuccess(actionId, item) {
-    return {
-        id: actionId,
-        type: `GET_USER_SUCCESS/${actionId}`,
-        item
+export function createFeedbackSuccess(item) {   
+    return (dispatch) => {
+        dispatch({
+            type: 'CREATE_FEEDBACK_SUCCESS',
+            item
+        })
     };
 }
