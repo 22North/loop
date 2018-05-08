@@ -3,10 +3,6 @@ import './style.css'
 
 class StarRating extends React.Component {
 
-    constructor(props) {
-        super(props)
-    }
-
     onClick(rating) {
         this.props.onClick(rating)
     }

@@ -2,6 +2,24 @@ import './style.css'
 import React from 'react'
 import StarRating from '../../components/StarRating'
 
+const mapStateToProps = (state) => {
+    return {
+        objectives: state.objectives,
+        objective: state.objective.objective
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createObjective: (data) => dispatch(createObjective(data)),
+        createTempObjective: ()=> dispatch(createTempObjective()),
+        getObjectives: () => dispatch(getObjectives()),
+        saveObjective: (data) => dispatch(saveObjective(data)),
+        clearObjective: () => dispatch(clearObjective()),
+        addToSharedWith: (userId) => dispatch(addToSharedWith(userId))
+    };
+};
+
 class Feedback extends React.Component {
 
     constructor(props) {
