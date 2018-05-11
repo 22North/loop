@@ -100,7 +100,7 @@ class Feedback extends React.Component {
 
         return (
             <div className="feedback-form-selected-user-details">
-                <span className="feedback-form-selected-user-details__heading">You're providing feedback on...</span><br />
+                <span className="feedback-form-selected-user-details__heading">You are providing feedback on...</span><br />
                 <span className="feedback-form-selected-user-details__name">{ this.state.user.firstname } { this.state.user.surname }</span><br />
                 <span className="feedback-form-selected-user-details__role">{ this.state.user.role }.</span>
             </div>
