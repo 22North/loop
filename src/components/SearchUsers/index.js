@@ -34,8 +34,12 @@ class SearchUsers extends React.Component {
     renderUsersFiltered() {
         if (this.props.users) {
             return (
-                <ul>
-                    { this.props.users.map(user => <li key={user.id} onClick={ () => { this.props.onUserClick(user) } }>{`${user.firstname} ${user.surname}`}</li>) }
+                <ul className="users-list users-list--cards">
+                    { this.props.users.map(user => 
+                        <li className="users-list__item" key={user.id} onClick={ () => { this.props.onUserClick(user) } }>
+                            <span className="users-list__item"></span>
+                            {`${user.firstname} ${user.surname}`}
+                        </li>) }
                 </ul>
             )
                 
