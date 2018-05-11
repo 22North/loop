@@ -9,12 +9,28 @@ class StarRating extends React.Component {
 
     render() {
         return (
-            <div>
-                <span onClick={() => this.onClick(1)}>star 1 </span>
-                <span onClick={() => this.onClick(2)}>star 2 </span>
-                <span onClick={() => this.onClick(3)}>star 3 </span>
-                <span onClick={() => this.onClick(4)}>star 4 </span>
-                <span onClick={() => this.onClick(5)}>star 5 </span>
+            <div className="star-rating">
+                
+                <button className="star-rating__icon" onClick={() => this.onClick(1)} type="button">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </button>
+
+                <button className="star-rating__icon" onClick={() => this.onClick(2)} type="button">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </button>
+                
+                <button className="star-rating__icon" onClick={() => this.onClick(3)} type="button">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </button>
+
+                <button className="star-rating__icon" onClick={() => this.onClick(4)} type="button">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </button>
+
+                <button className="star-rating__icon" onClick={() => this.onClick(5)} type="button">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </button>
+
             </div>
         )
     }
