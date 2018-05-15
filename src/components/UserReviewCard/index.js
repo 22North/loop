@@ -7,7 +7,7 @@ class UserReviewCard extends React.Component {
         return (
             <div className="user-review-card">
                 <div className="user-review-card__heading">
-                    Awais's objectives.
+                    {'Awais\'s objectives.'}
                 </div>   
                 <div className="user-review-card__sub-heading">
                     End of year review.
