@@ -11,10 +11,6 @@ class UserSelectForFeedback extends React.Component {
         };
     }
 
-    onUserClick (user) {
-        console.log(user)
-    }
-    
     render() {
         return (
             <div className="container">
