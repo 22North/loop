@@ -1,29 +1,64 @@
 import React from 'react'
-import UserDetailsCard from '../../components/UserDetailsCard'
-import UserReviewCard from '../../components/UserReviewCard'
+import UserCard from '../../components/UserCard'
 
-const MyTeam = () => 
-    <div className="main-container main-container--my-team">
-        <div className="container">
-            <div className="row">
-                <div className="col-sm-12">
-                    <h2 className="main-heading">{"My Team."}</h2>
-                    
-                    
+import './style.css'
 
-                </div>
-            </div>    
+class MyTeam extends React.Component {
 
-            <div class="row">
-                <div className="col-sm-6">
-                    <UserDetailsCard />
-                </div>
-                <div className="col-sm-6">
-                    <UserReviewCard />
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        };
+    }
+
+    onUserClick(user) {
+        window.location.href = `/my-team/${user.id}`
+    }
+
+    render() {
+        return (
+            <div className="main-container main-container--my-team my-team-view">
+                <div className="container">
+
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <h2 className="main-heading d-none">{"My Team."}</h2>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <h3 className="main-heading">My manager.</h3>
+                        </div>
+                    </div>   
+
+                    <div className="row">
+                        { [ {id: '246', firstname: 'Matt', surname: 'Goddard', role:'UX Dude' }].map(user => 
+                            <div className="col-3" key={ user.id }>
+                                <UserCard data={ user }  onUserClick={ this.onUserClick } />
+                            </div>
+                        ) }
+                    </div>
+
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <h3 className="main-heading">My direct reports.</h3>
+                        </div>
+                    </div>   
+
+                    <div className="row">
+                        { [{id: '123', firstname: 'Awais', surname: 'Muzaffar', role:'Front-end Developer' }, {id: '246', firstname: 'Matt', surname: 'Goddard', role:'UX Dude' }].map(user => 
+                            <div className="col-3" key={ user.id }>
+                                <UserCard data={ user }  onUserClick={ this.onUserClick } />
+                            </div>
+                        ) }
+                    </div>
+
                 </div>
             </div>
-
-        </div>
-    </div>
+        )
+    }
+}
 
 export default MyTeam
