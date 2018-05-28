@@ -1,29 +1,26 @@
 import { AUTH_SUCCESS, SIGNOUT_SUCCESS } from "./actions"
 
 const INITIAL_STATE = {
-    uid: '',
-    email: '',
-    password: '',
     authenticated: false,
     error: null,
+    currentUser: null,
 };
 
 export function auth(state = INITIAL_STATE, action) {
-
     switch (action.type) {
         case AUTH_SUCCESS:
             return {
-                ...state, 
+                ...state,
                 authenticated: true,
-                uid: action.user.uid,
                 error: null,
+                currentUser: action.user,
             }    
         case SIGNOUT_SUCCESS:
             return {
                 ...state, 
                 authenticated: false,
-                uid: '',
                 error: null,
+                currentUser: null,
             }
         default:
             return state

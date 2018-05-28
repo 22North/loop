@@ -3,7 +3,6 @@ import { ObjectiveCards } from '../../components'
 import { ObjectiveView } from '../../components'
 import { connect } from 'react-redux';
 import { createObjective, createTempObjective, getObjectives, saveObjective, clearObjective, addToSharedWith } from '../../data/objectives/actions'
-
 import './style.css'
 
 const mapStateToProps = (state) => {
