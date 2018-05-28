@@ -1,4 +1,3 @@
-
 import React from 'react'
 import ObjectiveCardsFilter from '../ObjectiveCardsFilter'
 import { ObjectiveCardsByDraft, ObjectiveCardsByInProgress, ObjectiveCardsByComplete } from '../ObjectiveCardsByType'

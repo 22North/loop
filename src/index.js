@@ -1,20 +1,25 @@
-import '@firebase/firestore';
-import 'bootstrap/dist/css/bootstrap.css';
-import * as firebase from 'firebase';
-import App from './App';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import configureStore from './store';
+import '@firebase/firestore'
+import 'bootstrap/dist/css/bootstrap.css'
+import * as firebase from 'firebase'
+import App from './App'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import configureStore from './store'
 import fireBaseConfig from './config'
-import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import registerServiceWorker from './registerServiceWorker'
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
-import './index.css';
+import { verifyAuth } from "../src/data/auth/actions"
 
-firebase.initializeApp(fireBaseConfig);
+import './index.css'
 
-const store = configureStore();
+firebase.initializeApp(fireBaseConfig)
+
+const store = configureStore()
+const auth = new firebase.auth()
+
+store.dispatch(verifyAuth());
 
 ReactDOM.render((
     <Provider store={store}>
@@ -26,4 +31,6 @@ ReactDOM.render((
 
 registerServiceWorker();
 
-export default store;
+export {
+    auth,
+}

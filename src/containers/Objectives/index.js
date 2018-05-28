@@ -50,7 +50,7 @@ class Objectives extends React.Component {
                     <ObjectiveCards data={ this.props.objectives } create={ this.props.createTempObjective } />
                     { this.renderObjectiveView() }
                 </div>
-            </div>      
+            </div> 
         )
     }
 }

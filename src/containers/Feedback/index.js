@@ -2,7 +2,7 @@ import './style.css'
 import React from 'react'
 import StarRating from '../../components/StarRating'
 import UserSelectForFeedback from '../../components/UserSelectForFeedback'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { createFeedback } from '../../data/generalFeedback/actions'
 
 const mapDispatchToProps = (dispatch) => {
