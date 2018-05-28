@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
-import Header from './components/Header'
+import React, { Component } from 'react'
 import Footer from './components/Footer'
 import Routes from './routes';
-
 import './App.css';
 
 class App extends Component {
