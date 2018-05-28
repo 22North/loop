@@ -1,17 +1,29 @@
+import { AUTH_SUCCESS, SIGNOUT_SUCCESS } from "./actions"
+
 const INITIAL_STATE = {
+    uid: '',
     email: '',
     password: '',
-    error: '',
-    loading: false,
-    loggedIn: false
+    authenticated: false,
+    error: null,
 };
 
 export function auth(state = INITIAL_STATE, action) {
+
     switch (action.type) {
-        case 'SIGN_IN_SUCCESS':
+        case AUTH_SUCCESS:
             return {
                 ...state, 
-                loggedIn: true
+                authenticated: true,
+                uid: action.user.uid,
+                error: null,
+            }    
+        case SIGNOUT_SUCCESS:
+            return {
+                ...state, 
+                authenticated: false,
+                uid: '',
+                error: null,
             }
         default:
             return state

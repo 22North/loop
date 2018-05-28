@@ -36,15 +36,16 @@ class SignInForm extends React.Component {
     render() {
         return (
             <div className="sign-in-form">
+                <div className="sign-in-form__logo"></div>
                 <form onSubmit={this.onSubmit}>
                     <div>
-                        <input type="email" placeholder="email" onChange={ event => this.setState(byPropKey('email', event.target.value)) } />
+                        <input className="sign-in-form__field" type="email" placeholder="Email address." onChange={ event => this.setState(byPropKey('email', event.target.value)) } />
                     </div>
                     <div>
-                        <input type="password" placeholder="password" onChange={ event => this.setState(byPropKey('password', event.target.value)) } />
+                        <input className="sign-in-form__field" type="password" placeholder="Password." onChange={ event => this.setState(byPropKey('password', event.target.value)) } />
                     </div>
                     <div>
-                        <input className="btn btn--black" type="submit" value="Sign In" />
+                        <input className="sign-in-form__button btn btn--black" type="submit" value="Sign In" />
                     </div>
                 </form>
             </div>

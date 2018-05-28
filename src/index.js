@@ -10,12 +10,16 @@ import registerServiceWorker from './registerServiceWorker'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
+import { verifyAuth } from "../src/data/auth/actions"
+
 import './index.css'
 
 firebase.initializeApp(fireBaseConfig)
 
 const store = configureStore()
 const auth = new firebase.auth()
+
+store.dispatch(verifyAuth());
 
 ReactDOM.render((
     <Provider store={store}>

@@ -5,7 +5,7 @@ import { Route } from "react-router-dom"
 import PrivateRoute from "../components/PrivateRoute"
 
 const Routes = () => (
-    <div>
+    <div class="main-content">
         <PrivateRoute exact path="/" component={Home} />
         <PrivateRoute path="/objectives" component={Objectives} />
         <PrivateRoute exact path="/feedback" component={Feedback} />
