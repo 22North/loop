@@ -24,7 +24,7 @@ const ObjectiveViewMyComments = (props) => {
             </div>
             <div className="row mb-4">
                 <div className="col-sm-12">
-                    <textarea className="form-control" defaultValue={ props.data.feedback } placeholder="Comments..." onChange={ (e) => props.data.feedback = e.target.value }></textarea>
+                    <textarea className="form-control" value={ props.data.feedback } placeholder="Comments..." onChange={ (e) => props.data.feedback = e.target.value }></textarea>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@ const ObjectiveViewEditText = (props) =>
         <div className="row mb-4">
             <div className="col-sm-3">
                 <label className="objective-view__form-label" for="objDueDate">Due date.</label>
-                <input className="form-control" defaultValue={ props.data.dueDate } id="objDueDate" onChange={ (e) => props.data.dueDate = e.target.value } type="date" />
+                <input className="form-control" value={ props.data.dueDate } id="objDueDate" onChange={ (e) => props.data.dueDate = e.target.value } type="date" />
             </div>
         </div>
 
@@ -45,14 +45,14 @@ const ObjectiveViewEditText = (props) =>
             <div className="col-sm-12">
                 <label className="objective-view__form-label" for="objTitle">Title.</label>
                 <span className="objective-view__form-note">Your objective title will be visible to those who provide feedback.</span>
-                <input className="form-control" id="objTitle" type="text" defaultValue={ props.data.title } onChange={ (e) => props.data.title = e.target.value } />
+                <input className="form-control" id="objTitle" type="text" value={ props.data.title } onChange={ (e) => props.data.title = e.target.value } />
             </div>
         </div>
         <div className="row mb-4">
             <div className="col-sm-12">
                 <label className="objective-view__form-label" for="objDescription">Description.</label>
                 <span className="objective-view__form-note">{"This isn't visible to anyone other than your manager"}.</span>
-                <textarea className="form-control" id="objDescription" defaultValue={ props.data.description } onChange={ (e) => props.data.description = e.target.value } />
+                <textarea className="form-control" id="objDescription" value={ props.data.description } onChange={ (e) => props.data.description = e.target.value } />
             </div>
         </div>
     </div>

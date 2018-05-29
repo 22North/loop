@@ -18,11 +18,13 @@ export function objectives(state = INITIAL_STATE, action) {
 export function objective(state = INITIAL_STATE, action) {
 
     switch (action.type) {
-        case 'GET_OBJECTIVE_SUCCESS':
+        
+        /*case 'GET_OBJECTIVE_SUCCESS':
             return {
                 ...state, 
                 objective: action.item
-            }
+            }*/
+
         case 'UPDATE_OBJECTIVE_SUCCESS':
             return {
                 ...state,
