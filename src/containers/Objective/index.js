@@ -21,16 +21,22 @@ const mapStateToProps = (state) => {
 
 class Objective extends React.Component {
     
-    componentDidMount() {
-        
-        const { match, location, history } = this.props
+    constructor(props) {
+        super(props);
+        this.goBack = this.goBack.bind(this)
+    }
 
-        this.props.getObjective(match.params.objectiveId)
+    componentDidMount() {
+        this.props.getObjective(this.props.match.params.objectiveId)
+    }
+
+    goBack() {
+        this.props.history.push('/objectives');
     }
 
     renderObjectiveView() {
         return this.props.objective !== null
-            ? <ObjectiveView data={ this.props.objective } close={ this.props.clearObjective } save={ this.props.saveObjective } addToSharedWith={ this.props.addToSharedWith } />
+            ? <ObjectiveView data={ this.props.objective } close={ this.goBack } save={ this.props.saveObjective } addToSharedWith={ this.props.addToSharedWith } />
             : null
     }
 
