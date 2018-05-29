@@ -1,8 +1,6 @@
 .objective-view {
     color: #000000;
-    position: absolute;
     width: 100%;
-    top: 0;
 }
 
 .objective-view__inner {
