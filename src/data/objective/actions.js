@@ -18,6 +18,18 @@ export function getObjective(objectiveId) {
     }
 }
 
+export function getEmptyObjective() {
+    return dispatch => dispatch(getObjectiveSuccess({
+        description: '',
+        dueDate: null,
+        feedback: null,
+        isNewlyCreated: true,
+        sharedwith: [],
+        status: 'draft',
+        title: '',
+    }))
+}
+
 export function getObjectiveSuccess(objective) {
     return {
         type: 'GET_OBJECTIVE_SUCCESS',
