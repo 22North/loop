@@ -26,7 +26,7 @@ export function getEmptyObjective() {
         isNewlyCreated: true,
         sharedwith: [],
         status: 'draft',
-        title: '',
+        title: 'xxx',
     }))
 }
 

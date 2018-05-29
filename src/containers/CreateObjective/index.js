@@ -11,6 +11,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
+    
     return {
         objective: state.objective.data,
     }
@@ -23,7 +24,7 @@ class CreateObjective extends React.Component {
         this.goBack = this.goBack.bind(this)
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.getEmptyObjective()
     }
 

@@ -27,7 +27,7 @@ export function getObjectivesSuccess(items) {
     };
 }
 
-export function getObjective(id) {
+/*export function getObjective(id) {
     return (dispatch) => {
 
         const docRef = firebase.firestore().collection('objectives').doc(id);
@@ -42,19 +42,19 @@ export function getObjective(id) {
             console.log("Error getting document:", error);
         });
     };
-}
+}*/
 
 export function loadObjective(item) {
-    return (dispatch) => dispatch(getObjectiveSuccess(item))
+    //return (dispatch) => dispatch(getObjectiveSuccess(item))
 }
 
-export function getObjectiveSuccess(item) {
+/*export function getObjectiveSuccess(item) {
     
     return {
         type: 'GET_OBJECTIVE_SUCCESS',
         item
     };
-}
+}*/
 
 export function clearObjective() {
     return (dispatch) => {
