@@ -23,7 +23,7 @@ class CreateObjective extends React.Component {
         this.goBack = this.goBack.bind(this)
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.getEmptyObjective()
     }
 
