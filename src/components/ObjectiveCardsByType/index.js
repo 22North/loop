@@ -1,6 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Card from '../Card'
-
 import './style.css'
 
 const ObjectiveCardsByDraft = (props) => 
@@ -18,7 +18,11 @@ const ObjectiveCardsByDraft = (props) =>
                                 </div>
                                 <div className="row">
                                     <div className="col-md-3">
-                                        <button className="card card--create-objective mb-4" onClick={() => props.create()}><span className="card--create-objective__label">Create new objective.</span></button>
+                                        <Link to="/objectives/create">
+                                            <div className="card card--create-objective mb-4">
+                                                <span className="card--create-objective__label">Create new objective.</span>
+                                            </div>
+                                        </Link>
                                     </div>
                                     {props.data.map((item) => (
                                         <div className="col-md-3" key={item.id}>
