@@ -1,15 +1,36 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { getUserSummary } from '../../data/userSummary/actions'
 import UserDetailsCard from '../../components/UserDetailsCard'
 import UserReviewCard from '../../components/UserReviewCard'
-
 import './style.css'
+
+const mapStateToProps = (state) => {
+    return {
+        userSummary: state.userSummary.data,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getUserSummary: (userId) => dispatch(getUserSummary(userId))
+    }
+}
+
 
 class MyTeamDetail extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
+    componentDidMount() {
+        this.props.getUserSummary('123')
+    }
+
+    renderUserDetailsCard() {
+        return this.props.userSummary ? <UserDetailsCard user={ this.props.userSummary } /> : null
+    }
+
+    renderUserReviewCard() {
+        return this.props.userSummary ? <UserReviewCard user={ this.props.userSummary } /> : null
     }
 
     render() {
@@ -26,10 +47,10 @@ class MyTeamDetail extends React.Component {
                     </div>    
                     <div class="row">
                         <div className="col-sm-6">
-                            <UserDetailsCard />
+                            { this.renderUserDetailsCard() }
                         </div>
                         <div className="col-sm-6">
-                            <UserReviewCard />
+                            { this.renderUserReviewCard() }
                         </div>
                     </div>
                 </div>
@@ -38,4 +59,4 @@ class MyTeamDetail extends React.Component {
     }
 }
 
-export default MyTeamDetail
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MyTeamDetail))

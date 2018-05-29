@@ -1,7 +1,7 @@
 import { GET_USER_SUMMARY_SUCCESS } from "./actions"
 
 const INITIAL_STATE = {
-    data: null,
+    data: {},
 };
 
 export function userSummary(state = INITIAL_STATE, action) {

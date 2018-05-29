@@ -6,7 +6,6 @@ import UserReviewCard from '../../components/UserReviewCard'
 import './style.css'
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         currentUser: state.auth.currentUser,
         userSummary: state.userSummary.data,
@@ -20,10 +19,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class Home extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
         this.props.getUserSummary(this.props.currentUser.uid)
