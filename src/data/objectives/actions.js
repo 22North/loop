@@ -1,10 +1,13 @@
-import '@firebase/firestore';
-import * as firebase from 'firebase';
+import '@firebase/firestore'
+import * as firebase from 'firebase'
 
-export function getObjectives() {
+export function getObjectives(userId) {
     return (dispatch) => {
 
-        firebase.firestore().collection('objectives')
+        const objectivesRef = firebase.firestore().collection('objectives')
+
+        objectivesRef
+            .where('createdById', '==', userId)
             .onSnapshot((querySnapshot) => {
 
                 let collection = [];

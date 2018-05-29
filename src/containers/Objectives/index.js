@@ -7,8 +7,9 @@ import './style.css'
 
 const mapStateToProps = (state) => {
     return {
+        currentUser: state.auth.currentUser,
         objectives: state.objectives,
-        objective: state.objective.objective
+        objective: state.objective.objective,
     };
 };
 
@@ -16,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         createObjective: (data) => dispatch(createObjective(data)),
         createTempObjective: ()=> dispatch(createTempObjective()),
-        getObjectives: () => dispatch(getObjectives()),
+        getObjectives: (userId) => dispatch(getObjectives(userId)),
         saveObjective: (data) => dispatch(saveObjective(data)),
         clearObjective: () => dispatch(clearObjective()),
         addToSharedWith: (userId) => dispatch(addToSharedWith(userId))
@@ -26,7 +27,7 @@ const mapDispatchToProps = (dispatch) => {
 class Objectives extends React.Component {
     
     componentDidMount() {
-        this.props.getObjectives();
+        this.props.getObjectives(this.props.currentUser.uid);
     }
 
     renderObjectiveView() {
