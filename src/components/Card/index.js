@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { loadObjective } from '../../data/objectives/actions'
-
 import './style.css'
 
 const mapDispatchToProps = (dispatch) => {
@@ -21,12 +21,14 @@ class CardFront extends React.Component {
 
     render() {
         return (
-            <div className="card__front card__clickable" onClick={() => this.props.loadObjective(this.props.data)}>
-                <div className={`card__status card__status--${this.props.data.status}`}></div>
-                <div className="date"></div>
-                <div className="card__title">{this.props.data.title}</div>
-                <div className="card__main-text">{this.props.data.description}</div>
-            </div>
+            <Link to={`/objectives/${this.props.data.id}`}>
+                <div className="card__front card__clickable">
+                    <div className={`card__status card__status--${this.props.data.status}`}></div>
+                    <div className="date"></div>
+                    <div className="card__title">{this.props.data.title}</div>
+                    <div className="card__main-text">{this.props.data.description}</div>
+                </div>
+            </Link>
         )
     }
 }
