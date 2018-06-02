@@ -3,6 +3,7 @@ import { ObjectiveCards } from '../../components'
 import { ObjectiveView } from '../../components'
 import { connect } from 'react-redux';
 import { createObjective, createTempObjective, getObjectives, saveObjective, clearObjective, addToSharedWith } from '../../data/objectives/actions'
+import { setObjective } from '../../data/objective/actions'
 import './style.css'
 
 const mapStateToProps = (state) => {
@@ -20,9 +21,10 @@ const mapDispatchToProps = (dispatch) => {
         getObjectives: (userId) => dispatch(getObjectives(userId)),
         saveObjective: (data) => dispatch(saveObjective(data)),
         clearObjective: () => dispatch(clearObjective()),
-        addToSharedWith: (userId) => dispatch(addToSharedWith(userId))
-    };
-};
+        addToSharedWith: (userId) => dispatch(addToSharedWith(userId)),
+        setObjective: (objective) => dispatch(setObjective(objective)),
+    }
+}
 
 class Objectives extends React.Component {
     
@@ -47,7 +49,7 @@ class Objectives extends React.Component {
                     </div>    
                 </div>
                 <div className="objectives-container">
-                    <ObjectiveCards data={ this.props.objectives } create={ this.props.createTempObjective } />
+                    <ObjectiveCards data={ this.props.objectives } create={ this.props.createTempObjective } set={ this.props.setObjective } />
                 </div>
             </div> 
         )

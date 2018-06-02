@@ -26,7 +26,7 @@ const ObjectiveCardsByDraft = (props) =>
                                     </div>
                                     {props.data.map((item) => (
                                         <div className="col-md-3" key={item.id}>
-                                            <Card data={item} />
+                                            <Card data={item} set={ props.set } />
                                         </div>
                                     ))}
                                 </div>
@@ -56,7 +56,7 @@ const ObjectiveCardsByInProgress = (props) =>
                                 <div className="row">
                                     {props.data.map((item) => (
                                         <div className="col-sm-3" key={item.id}>
-                                            <Card data={item} />
+                                            <Card data={item} set={ props.set } />
                                         </div>
                                     ))}
                                 </div>
@@ -86,7 +86,7 @@ const ObjectiveCardsByComplete = (props) =>
                                 <div className="row">
                                     {props.data.map((item) => (
                                         <div className="col-sm-3" key={item.id}>
-                                            <Card data={item} />
+                                            <Card data={item} set={ props.set } />
                                         </div>
                                     ))}
                                 </div>

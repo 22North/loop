@@ -62,7 +62,7 @@ const ObjectViewSavedText = (props) =>
         <button className="objective-view__toggle-button objective-view__toggle-button--edit" onClick={ () => props.showEditFieldsHandle() }>edit.</button>
         <div className="row mb-1">
             <div className="col-sm-12">
-                <span class="objective-view__due-date">Due date: { props.data.dueDate }</span>
+                <span className="objective-view__due-date">Due date: { props.data.dueDate }</span>
             </div>
         </div> 
         <div className="row">
