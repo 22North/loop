@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { getUserSummary } from '../../data/userSummary/actions'
 import UserDetailsCard from '../../components/UserDetailsCard'
 import UserReviewCard from '../../components/UserReviewCard'
@@ -42,7 +42,7 @@ class MyTeamDetail extends React.Component {
                             <h2 className="main-heading d-none">{"My Team."}</h2>        
                         </div>
                         <div className="col-sm-6">
-                            <a className="btn btn--black float-sm-right" href="/my-team/">Back to team.</a>       
+                            <Link className="btn btn--black float-sm-right" to="/my-team/">Back to team.</Link>       
                         </div>
                     </div>    
                     <div class="row">
