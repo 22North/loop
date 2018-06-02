@@ -21,13 +21,17 @@ export function getObjective(objectiveId) {
 export function getEmptyObjective() {
     return dispatch => dispatch(getObjectiveSuccess({
         description: '',
-        dueDate: null,
+        dueDate: '',
         feedback: null,
         isNewlyCreated: true,
         sharedwith: [],
         status: 'draft',
         title: '',
     }))
+}
+
+export function setObjective(objective) {
+    return dispatch => dispatch(getObjectiveSuccess(objective))
 }
 
 export function getObjectiveSuccess(objective) {

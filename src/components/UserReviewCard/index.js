@@ -10,7 +10,7 @@ const UserReviewCard = (props) =>
             End of year review.
         </div>   
         <div className="user-review-card__summary">
-            <table class="table table-striped">
+            <table className="table table-striped">
                 <tbody>
                     <tr>
                         <th className="user-review-card__count-heading" scope="row">Drafts.</th>

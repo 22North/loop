@@ -12,23 +12,23 @@ class StarRating extends React.Component {
             <div className="star-rating">
                 
                 <button className="star-rating__icon" onClick={() => this.onClick(1)} type="button">
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i className="fa fa-star" aria-hidden="true"></i>
                 </button>
 
                 <button className="star-rating__icon" onClick={() => this.onClick(2)} type="button">
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i className="fa fa-star" aria-hidden="true"></i>
                 </button>
                 
                 <button className="star-rating__icon" onClick={() => this.onClick(3)} type="button">
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i className="fa fa-star" aria-hidden="true"></i>
                 </button>
 
                 <button className="star-rating__icon" onClick={() => this.onClick(4)} type="button">
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i className="fa fa-star" aria-hidden="true"></i>
                 </button>
 
                 <button className="star-rating__icon" onClick={() => this.onClick(5)} type="button">
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i className="fa fa-star" aria-hidden="true"></i>
                 </button>
 
             </div>

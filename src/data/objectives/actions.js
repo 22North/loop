@@ -10,9 +10,9 @@ export function getObjectives(userId) {
             .where('createdById', '==', userId)
             .onSnapshot((querySnapshot) => {
 
-                let collection = [];
+                let collection = []
 
-                querySnapshot.forEach(doc => collection.push({ id: doc.id, ...doc.data()}));
+                querySnapshot.forEach(doc => collection.push({ id: doc.id, ...doc.data()}))
 
                 dispatch(getObjectivesSuccess(collection));
 
@@ -25,10 +25,6 @@ export function getObjectivesSuccess(items) {
         type: 'GET_OBJECTIVES_SUCCESS',
         items
     };
-}
-
-export function loadObjective(item) {
-    //return (dispatch) => dispatch(getObjectiveSuccess(item))
 }
 
 export function clearObjective() {
