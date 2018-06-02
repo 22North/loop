@@ -31,7 +31,7 @@ class Objective extends React.Component {
     }
 
     goBack() {
-        this.props.history.push('/objectives');
+        this.props.history.push('/objectives')
     }
 
     renderObjectiveView() {

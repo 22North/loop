@@ -1,19 +1,21 @@
 import React from 'react'
 import UserCard from '../../components/UserCard'
+import { withRouter } from 'react-router-dom'
 
 import './style.css'
 
 class MyTeam extends React.Component {
 
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
 
-        };
+        }
+        this.onUserClick = this.onUserClick.bind(this)        
     }
 
     onUserClick(user) {
-        window.location.href = `/my-team/${user.id}`
+        this.props.history.push(`/my-team/${user.id}`)
     }
 
     render() {
@@ -61,4 +63,4 @@ class MyTeam extends React.Component {
     }
 }
 
-export default MyTeam
+export default withRouter(MyTeam)
