@@ -53,11 +53,13 @@
 }
 
 .objective-view__status-select {
-    
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    -webkit-appearance: none;
+    border-radius: 7px 7px 0px 0px;
+    border: 1px solid #ccc;
     color: #ffffff;
-    padding: 10px 15px;    
+    font-size: 16px;
+    padding: 10px 35px 10px 5px;
+    text-indent: 15px;
 }
 
 .objective-view__status-select.draft {
