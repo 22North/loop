@@ -27,6 +27,7 @@ class Objective extends React.Component {
     constructor(props) {
         super(props)
         this.goBack = this.goBack.bind(this)
+        this.saveObjective = this.saveObjective.bind(this)
     }
 
     componentDidMount() {
@@ -41,13 +42,17 @@ class Objective extends React.Component {
         this.props.history.push('/objectives')
     }
 
+    saveObjective() {
+        this.props.saveObjective().then(() => this.goBack())
+    }
+
     renderObjectiveView() {
         return this.props.objective !== null
             ? <ObjectiveView 
                 data={ this.props.objective } 
                 usersSharedWith={ this.props.usersSharedWith } 
                 close={ this.goBack } 
-                save={ this.props.saveObjective } 
+                save={ this.saveObjective } 
                 addToSharedWith={ this.props.addToSharedWith } 
                 set={ this.props.setObjectiveProp } />
             : null
