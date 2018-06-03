@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { getEmptyObjective } from '../../data/objective/actions'
+import { addToSharedWith, getEmptyObjective } from '../../data/objective/actions'
 import ObjectiveView from '../../components/ObjectiveView'
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getEmptyObjective: (objectiveId) => dispatch(getEmptyObjective()),
+        addToSharedWith: (user) => dispatch(addToSharedWith(user)),
     }
 }
 
