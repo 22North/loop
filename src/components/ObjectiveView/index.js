@@ -173,7 +173,7 @@ class ObjectiveView extends React.Component {
 
     renderAddedUsers() {
         return (
-            <div className={`objective-view__shared-with-list ${( this.state.showSharedWithEditview === true || this.props.data.sharedwith.length === 0 ) ? "d-none" : "d-block"}`}>
+            <div className={`objective-view__shared-with-list ${( this.state.showSharedWithEditview === true || this.props.usersSharedWith.length === 0 ) ? "d-none" : "d-block"}`}>
                 <div className="row mb-3">
                     <div className="col-sm-12">
                         <h3 className="objective-view__heading">Working on the objective with...</h3>
@@ -190,7 +190,7 @@ class ObjectiveView extends React.Component {
 
     renderSharedWithEditView() {
         return (
-            <div className={ ( this.state.showSharedWithEditview === true || this.props.data.sharedwith.length === 0 ) ? "d-block" : "d-none" }>
+            <div className={ ( this.state.showSharedWithEditview === true || this.props.usersSharedWith.length === 0 ) ? "d-block" : "d-none" }>
                 <div className="row">
                     <div className="col-sm-12">
                         <span className="objective-view__form-label">Share objective.</span>
@@ -205,7 +205,7 @@ class ObjectiveView extends React.Component {
     renderSharedWith() {
         return (
             <div className="objective-view__section">
-                { this.props.data.sharedwith.length > 0 ? <button className="objective-view__toggle-button objective-view__toggle-button--edit" onClick={ () => this.showSharedWithEditviewHandle() }>edit.</button> : null } 
+                { this.props.usersSharedWith.length > 0 ? <button className="objective-view__toggle-button objective-view__toggle-button--edit" onClick={ () => this.showSharedWithEditviewHandle() }>edit.</button> : null } 
                 { this.renderSharedWithEditView() }
                 { this.renderAddedUsers() }
             </div>
