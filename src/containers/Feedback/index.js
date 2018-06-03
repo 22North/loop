@@ -23,7 +23,7 @@ class Feedback extends React.Component {
             user: null,
             comments: '',
             rating: null,
-        };
+        }
 
         this.onStarRatingClick = this.onStarRatingClick.bind(this)
         this.onCommentsChange = this.onCommentsChange.bind(this)

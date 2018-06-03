@@ -1,25 +1,33 @@
 import '@firebase/firestore'
 import * as firebase from 'firebase'
+export const GET_OBJECTIVE = 'GET_OBJECTIVE'
+export const CLEAR_OBJECTIVE = 'CLEAR_OBJECTIVE'
+
+export function clearObjective() {
+    return (dispatch) => dispatch(onClearObjective())
+}
 
 export function getObjective(objectiveId) {
     return (dispatch) => {
 
-        const objectivesRef = firebase.firestore().collection('objectives').doc(objectiveId)
+        const objectiveRef = firebase.firestore().collection('objectives').doc(objectiveId)
 
-        objectivesRef.get().then((doc) => {
-            if (doc.exists) {
-                dispatch(getObjectiveSuccess({id: doc.id, ...doc.data()}))
-            } else {
-                console.log("No such document!")
-            }
-        }).catch(function(error) {
-            console.log("Error getting document:", error)
-        })
+        objectiveRef
+            .get()
+            .then((doc) => {
+                if (doc.exists) {
+                    dispatch(onGetObjective({id: doc.id, ...doc.data()}))
+                } else {
+                    console.log("No such document!")
+                }
+            }).catch(function(error) {
+                console.log("Error getting document:", error)
+            })
     }
 }
 
 export function getEmptyObjective() {
-    return dispatch => dispatch(getObjectiveSuccess({
+    return dispatch => dispatch(onGetObjective({
         description: '',
         dueDate: '',
         feedback: null,
@@ -30,13 +38,35 @@ export function getEmptyObjective() {
     }))
 }
 
-export function setObjective(objective) {
-    return dispatch => dispatch(getObjectiveSuccess(objective))
+export function saveObjective(objective) {
+    return (dispatch) => {
+        
+        const objectiveRef = firebase.firestore().collection('objectives').doc(objective.id)
+
+        objectiveRef
+            .update(objective)
+            .then(() => {
+
+            })
+            .catch((error) => {
+
+            })
+    }
 }
 
-export function getObjectiveSuccess(objective) {
+export function setObjective(objective) {
+    return dispatch => dispatch(onGetObjective(objective))
+}
+
+export function onClearObjective(objective) {
     return {
-        type: 'GET_OBJECTIVE_SUCCESS',
-        objective
+        type: CLEAR_OBJECTIVE,
+    }
+}
+
+export function onGetObjective(objective) {
+    return {
+        type: GET_OBJECTIVE,
+        objective,
     }
 }

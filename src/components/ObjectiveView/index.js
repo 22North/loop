@@ -4,7 +4,6 @@ import SearchUsers from '../SearchUsers'
 import UserChip from '../../components/UserChip'
 import { changeObjectiveStatus } from '../../data/objectives/actions'
 import { connect } from 'react-redux'
-
 import './style.css'
 
 const mapDispatchToProps = (dispatch) => {
@@ -36,21 +35,21 @@ const ObjectiveViewEditText = (props) =>
 
         <div className="row mb-4">
             <div className="col-sm-3">
-                <label className="objective-view__form-label" for="objDueDate">Due date.</label>
-                <input className="form-control" value={ props.data.dueDate } id="objDueDate" onChange={ (e) => props.data.dueDate = e.target.value } type="date" />
+                <label className="objective-view__form-label" htmlFor="dueDate">Due date.</label>
+                <input className="form-control" defaultValue={ props.data.dueDate } id="dueDate" onChange={ (event) => props.onChange(event) } type="date" />
             </div>
         </div>
 
         <div className="row mb-4">
             <div className="col-sm-12">
-                <label className="objective-view__form-label" for="objTitle">Title.</label>
+                <label className="objective-view__form-label" htmlFor="title">Title.</label>
                 <span className="objective-view__form-note">Your objective title will be visible to those who provide feedback.</span>
-                <input className="form-control" id="objTitle" type="text" value={ props.data.title } onChange={ (e) => props.data.title = e.target.value } />
+                <input className="form-control" defaultValue={ props.data.title }  id="title" onChange={ (event) => props.onChange(event) } type="text" />
             </div>
         </div>
         <div className="row mb-4">
             <div className="col-sm-12">
-                <label className="objective-view__form-label" for="objDescription">Description.</label>
+                <label className="objective-view__form-label" htmlFor="objDescription">Description.</label>
                 <span className="objective-view__form-note">{"This isn't visible to anyone other than your manager"}.</span>
                 <textarea className="form-control" id="objDescription" value={ props.data.description } onChange={ (e) => props.data.description = e.target.value } />
             </div>
@@ -93,13 +92,11 @@ class ObjectiveView extends React.Component {
         this.state = {
             showEditFields: false,
             showSharedWithEditview: false,
-            showFeedbackForm: false
-        };
+            showFeedbackForm: false,
+            objective: { ...this.props.data },
+        }
+        this.onInputChange = this.onInputChange.bind(this)
     }
-
-    componentDidMount() {
-        window.scrollTo(0, 0)
-    }  
 
     addToSharedWith(user) {
         this.props.addToSharedWith(user.id)
@@ -122,11 +119,19 @@ class ObjectiveView extends React.Component {
         this.setState({ ...this.state, showSharedWithEditview: true })
     }
 
+    onInputChange(event) {
+        this.setState({
+            objective: { 
+                ...this.state.objective, 
+                [event.target.id]: event.target.value 
+            }
+        })
+    }
+
     renderStatusHeader() {
         return (
             <div className="row mb-4">
                 <div className="col-sm-12">
-                    
                     { this.props.data.isNewlyCreated 
                     ? <div><span className="objective-view__status-label">Create objective: </span><span className="objective-view__status-text">{ this.props.data.status }</span></div> 
                     : <div><span className="objective-view__status-label">Objective status: </span><span className="objective-view__status-text">{ this.props.data.status }</span></div> }
@@ -148,7 +153,7 @@ class ObjectiveView extends React.Component {
     renderTitleAndDescription() {
         return (
             <div className="objective-view__section">
-                <ObjectiveViewEditText data={ this.props.data } showEditFields={ this.props.data.isNewlyCreated || this.state.showEditFields } />
+                <ObjectiveViewEditText data={ this.props.data } showEditFields={ this.props.data.isNewlyCreated || this.state.showEditFields } onChange={ this.onInputChange } />
                 <ObjectViewSavedText data={ this.props.data } showEditFields={ this.props.data.isNewlyCreated || this.state.showEditFields } showEditFieldsHandle={ this.showEditFieldsHandle.bind(this) } />
             </div>
         )

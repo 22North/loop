@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
-import { getObjective } from '../../data/objective/actions'
+import { getObjective, clearObjective } from '../../data/objective/actions'
 import ObjectiveView from '../../components/ObjectiveView'
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getObjective: (objectiveId) => dispatch(getObjective(objectiveId)),
-        clearObjective: () => {},
+        clearObjective: () => dispatch(clearObjective()),
         saveObjective: () => {},
         addToSharedWith: () => {},
     }
@@ -22,12 +22,16 @@ const mapStateToProps = (state) => {
 class Objective extends React.Component {
     
     constructor(props) {
-        super(props);
+        super(props)
         this.goBack = this.goBack.bind(this)
     }
 
     componentDidMount() {
         this.props.getObjective(this.props.match.params.objectiveId)
+    }
+
+    componentWillUnmount() {
+        this.props.clearObjective()
     }
 
     goBack() {
