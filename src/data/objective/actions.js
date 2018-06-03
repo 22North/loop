@@ -5,6 +5,7 @@ export const ADD_USER_TO_SHARED_WITH = 'ADD_USER_TO_SHARED_WITH'
 export const CLEAR_OBJECTIVE = 'CLEAR_OBJECTIVE'
 export const GET_OBJECTIVE = 'GET_OBJECTIVE'
 export const GET_USERS_SHARED_WITH = 'GET_USERS_SHARED_WITH'
+export const SET_OBJECTIVE_PROP = 'SET_OBJECTIVE_PROP'
 
 export function addToSharedWith(user) {
     return dispatch => dispatch(onAddToUsersSharedWith(user))
@@ -67,13 +68,21 @@ export function getUsersSharedWith(userIds) {
     }
 }
 
-export function saveObjective(objective) {
-    return (dispatch) => {
+export function saveObjective() {
+    return (dispatch, getState) => {
+
+        const state = getState()
+        const sharedwith = [ ...state.objective.usersSharedWith.map(user => user.id) ]
+        const objective = {
+            ...state.objective.data,
+            sharedwith
+        }
         const objectiveRef = firebase.firestore().collection('objectives').doc(objective.id)
+        
         objectiveRef
             .update(objective)
             .then(() => {
-
+                console.log('saved!')
             })
             .catch((error) => {
 
@@ -85,7 +94,11 @@ export function setObjective(objective) {
     return dispatch => dispatch(onGetObjective(objective))
 }
 
-// Dispatch to reducers.
+export function setObjectiveProp(prop, value) {
+    return dispatch => dispatch(onSetObjectiveProp(prop, value))
+}
+
+// dispatch to reducers
 
 export function onAddToUsersSharedWith(user) {
     return {
@@ -110,6 +123,14 @@ export function onGetObjective(objective) {
 export function onGetUsersSharedWith(user) {
     return {
         type: ADD_USER_TO_SHARED_WITH,
-        user
+        user,
+    }
+}
+
+export function onSetObjectiveProp(prop, value) {
+    return {
+        type: SET_OBJECTIVE_PROP,
+        prop: prop,
+        value: value,
     }
 }

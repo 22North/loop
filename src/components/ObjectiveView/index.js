@@ -2,15 +2,7 @@
 import React from 'react'
 import SearchUsers from '../SearchUsers'
 import UserChip from '../../components/UserChip'
-import { changeObjectiveStatus } from '../../data/objectives/actions'
-import { connect } from 'react-redux'
 import './style.css'
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        changeObjectiveStatus: (value) => dispatch(changeObjectiveStatus(value))
-    };
-};
 
 const ObjectiveViewMyComments = (props) => {
     return (
@@ -36,7 +28,12 @@ const ObjectiveViewEditText = (props) =>
         <div className="row mb-4">
             <div className="col-sm-3">
                 <label className="objective-view__form-label" htmlFor="dueDate">Due date.</label>
-                <input className="form-control" defaultValue={ props.data.dueDate } id="dueDate" onChange={ (event) => props.onChange(event) } type="date" />
+                <input 
+                    className="form-control" 
+                    defaultValue={ props.data.dueDate } 
+                    id="dueDate" 
+                    onChange={ (event) => props.set(event.target.id, event.target.value) } 
+                    type="date" />
             </div>
         </div>
 
@@ -44,14 +41,23 @@ const ObjectiveViewEditText = (props) =>
             <div className="col-sm-12">
                 <label className="objective-view__form-label" htmlFor="title">Title.</label>
                 <span className="objective-view__form-note">Your objective title will be visible to those who provide feedback.</span>
-                <input className="form-control" defaultValue={ props.data.title }  id="title" onChange={ (event) => props.onChange(event) } type="text" />
+                <input 
+                    className="form-control" 
+                    defaultValue={ props.data.title }  
+                    id="title" 
+                    onChange={ (event) => props.set(event.target.id, event.target.value) } 
+                    type="text" />
             </div>
         </div>
         <div className="row mb-4">
             <div className="col-sm-12">
                 <label className="objective-view__form-label" htmlFor="objDescription">Description.</label>
                 <span className="objective-view__form-note">{"This isn't visible to anyone other than your manager"}.</span>
-                <textarea className="form-control" id="objDescription" value={ props.data.description } onChange={ (e) => props.data.description = e.target.value } />
+                <textarea 
+                    className="form-control" 
+                    id="description" 
+                    defaultValue={ props.data.description } 
+                    onChange={ (event) => props.set(event.target.id, event.target.value) } />
             </div>
         </div>
     </div>
@@ -105,8 +111,9 @@ class ObjectiveView extends React.Component {
         })
     }
 
-    changeStatus(value) {
-        this.props.changeObjectiveStatus(value)
+    changeStatus(prop, value) {
+
+        this.props.set(prop, value)
 
         if (value === 'complete') {
             this.setState({ ...this.state, showFeedbackForm: true })
@@ -144,10 +151,15 @@ class ObjectiveView extends React.Component {
 
     renderStatusDropdown() {
         return (
-            <select className={`objective-view__status-select ${this.props.data.status}`} onChange={(e) => this.changeStatus(e.target.value)}>
-                <option value="draft" selected={this.props.data.status === 'draft'}>Change status: Draft</option>
-                <option value="inProgress" selected={this.props.data.status === 'inProgress'}>Change status: In progress</option>
-                <option value="complete" selected={this.props.data.status === 'complete'}>Change status: Completed.</option>
+            <select 
+                id="status"
+                className={`objective-view__status-select ${this.props.data.status}`} 
+                defaultValue={ this.props.data.status }
+                onChange={(event) => this.changeStatus(event.target.id, event.target.value)}>
+
+                <option value="draft">Change status: Draft</option>
+                <option value="inProgress">Change status: In progress</option>
+                <option value="complete">Change status: Completed.</option>
             </select>
         )
     }
@@ -155,8 +167,14 @@ class ObjectiveView extends React.Component {
     renderTitleAndDescription() {
         return (
             <div className="objective-view__section">
-                <ObjectiveViewEditText data={ this.props.data } showEditFields={ this.props.data.isNewlyCreated || this.state.showEditFields } onChange={ this.onInputChange } />
-                <ObjectViewSavedText data={ this.props.data } showEditFields={ this.props.data.isNewlyCreated || this.state.showEditFields } showEditFieldsHandle={ this.showEditFieldsHandle.bind(this) } />
+                <ObjectiveViewEditText 
+                    data={ this.props.data } 
+                    showEditFields={ this.props.data.isNewlyCreated || this.state.showEditFields } 
+                    set={ this.props.set } />
+                <ObjectViewSavedText 
+                    data={ this.props.data } 
+                    showEditFields={ this.props.data.isNewlyCreated || this.state.showEditFields } 
+                    showEditFieldsHandle={ this.showEditFieldsHandle.bind(this) } />
             </div>
         )
     }
@@ -165,7 +183,7 @@ class ObjectiveView extends React.Component {
         return (
             <div className="row">
                 <div className="col-sm-12">
-                    <button className="objective-view__btn objective-view__btn--save" onClick={ () => this.props.save(this.props.data) }>Save Objective.</button>
+                    <button className="objective-view__btn objective-view__btn--save" onClick={ () => this.props.save() }>Save Objective.</button>
                 </div>
             </div>
         )
@@ -267,4 +285,4 @@ class ObjectiveView extends React.Component {
     }
 }
 
-export default connect(null, mapDispatchToProps)(ObjectiveView)
+export default ObjectiveView
