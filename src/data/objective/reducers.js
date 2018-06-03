@@ -3,6 +3,7 @@ import {
     CLEAR_OBJECTIVE,
     GET_OBJECTIVE, 
     GET_USERS_SHARED_WITH,
+    SET_OBJECTIVE_PROP,
 } from './actions'
 
 const INITIAL_STATE = {
@@ -25,24 +26,38 @@ export function objective(state = INITIAL_STATE, action) {
             
             return {
                 ...state,
-                usersSharedWith: [ ...state.usersSharedWith, action.user ],
-            }
-        case GET_OBJECTIVE:
-            return {
-                ...state, 
-                data: action.objective,
-                usersSharedWith: [], // We want to re-populate this each time we get a new objective.
-            }
-        case GET_USERS_SHARED_WITH:
-            return {
-                ...state, 
-                usersSharedWith: [ ...state.usersSharedWith, action.user ],
+                usersSharedWith: [ 
+                    ...state.usersSharedWith, 
+                    action.user,
+                ],
             }
         case CLEAR_OBJECTIVE:
             return {
                 ...state, 
                 data: null,
                 usersSharedWith: [],
+            }
+        case GET_OBJECTIVE:
+            return {
+                ...state, 
+                data: action.objective,
+                usersSharedWith: [], // we want to re-populate this each time we get a new objective
+            }
+        case GET_USERS_SHARED_WITH:
+            return {
+                ...state, 
+                usersSharedWith: [ 
+                    ...state.usersSharedWith, 
+                    action.user 
+                ],
+            }
+        case SET_OBJECTIVE_PROP:
+            return {
+                ...state, 
+                data: {
+                    ...state.data, 
+                    [action.prop]: action.value,
+                }
             }
         default:
             return {
