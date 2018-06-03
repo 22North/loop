@@ -7,7 +7,6 @@ export const GET_OBJECTIVE = 'GET_OBJECTIVE'
 export const GET_USERS_SHARED_WITH = 'GET_USERS_SHARED_WITH'
 
 export function addToSharedWith(user) {
-    console.log(user)
     return dispatch => dispatch(onAddToUsersSharedWith(user))
 }
 
