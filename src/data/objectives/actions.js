@@ -43,12 +43,12 @@ export function createTempObjective() {
         description: null,
         sharedwith: [],
         feedback: null,
-        isNewlyCreated: true
+        isNew: true
     }))
 }
 
 export function createObjective(item) {
-    item.isNewlyCreated = false;
+    item.isNew = false;
     return (dispatch) => {
         firebase.firestore().collection('objectives')
             .add(item)
@@ -91,7 +91,7 @@ export function updateObjectiveSuccess() {
 }
 
 export function saveObjective(item) {
-    if (item.isNewlyCreated) {
+    if (item.isNew) {
         return createObjective(item)
     } else {
         return updateObjective(item)

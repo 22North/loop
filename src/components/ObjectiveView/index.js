@@ -147,7 +147,7 @@ class ObjectiveView extends React.Component {
         return (
             <div className="row mb-4">
                 <div className="col-sm-12">
-                    { this.props.data.isNewlyCreated 
+                    { this.props.data.isNew 
                     ? <div><span className="objective-view__status-label">Create objective: </span><span className="objective-view__status-text">{ this.props.data.status }</span></div> 
                     : <div><span className="objective-view__status-label">Objective status: </span><span className="objective-view__status-text">{ this.props.data.status }</span></div> }
                 </div>
@@ -175,11 +175,11 @@ class ObjectiveView extends React.Component {
             <div className="objective-view__section">
                 <ObjectiveViewEditText 
                     data={ this.props.data } 
-                    showEditFields={ this.props.data.isNewlyCreated || this.state.showEditFields } 
+                    showEditFields={ this.props.data.isNew || this.state.showEditFields } 
                     set={ this.props.set } />
                 <ObjectViewSavedText 
                     data={ this.props.data } 
-                    showEditFields={ this.props.data.isNewlyCreated || this.state.showEditFields } 
+                    showEditFields={ this.props.data.isNew || this.state.showEditFields } 
                     showEditFieldsHandle={ this.showEditFieldsHandle.bind(this) } />
             </div>
         )

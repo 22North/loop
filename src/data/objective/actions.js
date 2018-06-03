@@ -25,6 +25,7 @@ export function createObjective() {
             ...state.objective.data,
             createdById,
             sharedwith,
+            isNew: false,
         }
         const objectivesRef = firebase.firestore().collection('objectives')
 
@@ -68,7 +69,7 @@ export function getEmptyObjective() {
         description: '',
         dueDate: '',
         feedback: '',
-        isNewlyCreated: true,
+        isNew: true,
         sharedwith: [],
         status: 'draft',
         title: '',
