@@ -43,7 +43,13 @@ class Objective extends React.Component {
 
     renderObjectiveView() {
         return this.props.objective !== null
-            ? <ObjectiveView data={ this.props.objective } usersSharedWith={ this.props.usersSharedWith } close={ this.goBack } save={ this.props.saveObjective } addToSharedWith={ this.props.addToSharedWith } set={ this.props.setObjectiveProp } />
+            ? <ObjectiveView 
+                data={ this.props.objective } 
+                usersSharedWith={ this.props.usersSharedWith } 
+                close={ this.goBack } 
+                save={ this.props.saveObjective } 
+                addToSharedWith={ this.props.addToSharedWith } 
+                set={ this.props.setObjectiveProp } />
             : null
     }
 

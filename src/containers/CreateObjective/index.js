@@ -1,18 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { addToSharedWith, getEmptyObjective } from '../../data/objective/actions'
+import { addToSharedWith, createObjective, getEmptyObjective, setObjectiveProp } from '../../data/objective/actions'
 import ObjectiveView from '../../components/ObjectiveView'
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getEmptyObjective: (objectiveId) => dispatch(getEmptyObjective()),
         addToSharedWith: (user) => dispatch(addToSharedWith(user)),
+        createObjective: () => dispatch(createObjective()),
+        getEmptyObjective: (objectiveId) => dispatch(getEmptyObjective()),
+        setObjectiveProp: (prop, value) => dispatch(setObjectiveProp(prop, value)),
     }
 }
 
 const mapStateToProps = (state) => {
-    
     return {
         objective: state.objective.data,
         usersSharedWith: state.objective.usersSharedWith,
@@ -22,7 +23,7 @@ const mapStateToProps = (state) => {
 class CreateObjective extends React.Component {
     
     constructor(props) {
-        super(props);
+        super(props)
         this.goBack = this.goBack.bind(this)
     }
 
@@ -31,12 +32,18 @@ class CreateObjective extends React.Component {
     }
 
     goBack() {
-        this.props.history.push('/objectives');
+        this.props.history.push('/objectives')
     }
 
     renderObjectiveView() {
         return this.props.objective !== null
-            ? <ObjectiveView data={ this.props.objective } close={ this.goBack } save={ this.props.saveObjective } addToSharedWith={ this.props.addToSharedWith } usersSharedWith={  this.props.usersSharedWith } />
+            ? <ObjectiveView 
+                data={ this.props.objective } 
+                close={ this.goBack } 
+                save={ this.props.createObjective } 
+                set={ this.props.setObjectiveProp }
+                addToSharedWith={ this.props.addToSharedWith } 
+                usersSharedWith={ this.props.usersSharedWith } />
             : null
     }
 

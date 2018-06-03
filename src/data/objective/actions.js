@@ -15,6 +15,30 @@ export function clearObjective() {
     return (dispatch) => dispatch(onClearObjective())
 }
 
+export function createObjective() {
+    return (dispatch, getState) => {
+
+        const state = getState()
+        const createdById = state.auth.currentUser.uid
+        const sharedwith = [ ...state.objective.usersSharedWith.map(user => user.id) ]
+        const objective = {
+            ...state.objective.data,
+            createdById,
+            sharedwith,
+        }
+        const objectivesRef = firebase.firestore().collection('objectives')
+
+        objectivesRef
+            .add(objective)
+            .then(() => {
+                console.log('saved!')
+            })
+            .catch((error) => {
+
+            })
+    }
+}
+
 export function getObjective(objectiveId) {
     return (dispatch) => {
 
@@ -75,10 +99,10 @@ export function saveObjective() {
         const sharedwith = [ ...state.objective.usersSharedWith.map(user => user.id) ]
         const objective = {
             ...state.objective.data,
-            sharedwith
+            sharedwith,
         }
         const objectiveRef = firebase.firestore().collection('objectives').doc(objective.id)
-        
+                
         objectiveRef
             .update(objective)
             .then(() => {
