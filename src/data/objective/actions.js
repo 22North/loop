@@ -67,7 +67,7 @@ export function getEmptyObjective() {
     return (dispatch) => dispatch(onGetObjective({
         description: '',
         dueDate: '',
-        feedback: null,
+        feedback: '',
         isNewlyCreated: true,
         sharedwith: [],
         status: 'draft',

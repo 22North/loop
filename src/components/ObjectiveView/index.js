@@ -15,7 +15,13 @@ const ObjectiveViewMyComments = (props) => {
             </div>
             <div className="row mb-4">
                 <div className="col-sm-12">
-                    <textarea className="form-control" value={ props.data.feedback } placeholder="Comments..." onChange={ (e) => props.data.feedback = e.target.value }></textarea>
+                    <textarea 
+                        className="form-control" 
+                        id="feedback"
+                        defaultValue={ props.data.feedback } 
+                        onChange={ (event) => props.set(event.target.id, event.target.value) }
+                        placeholder="Comments...">
+                    </textarea>
                 </div>
             </div>
         </div>
