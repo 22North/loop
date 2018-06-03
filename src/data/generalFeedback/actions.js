@@ -2,7 +2,7 @@ import '@firebase/firestore';
 import * as firebase from 'firebase';
 
 export function createFeedback(item) {
-    item.isNewlyCreated = false;
+    item.isNew = false;
     return (dispatch) => {
         firebase.firestore().collection('feedback')
             .add(item)

@@ -25,10 +25,11 @@ export function createObjective() {
             ...state.objective.data,
             createdById,
             sharedwith,
+            isNew: false,
         }
         const objectivesRef = firebase.firestore().collection('objectives')
 
-        objectivesRef
+        return objectivesRef
             .add(objective)
             .then(() => {
                 console.log('saved!')
@@ -44,7 +45,7 @@ export function getObjective(objectiveId) {
 
         const objectiveRef = firebase.firestore().collection('objectives').doc(objectiveId)
 
-        objectiveRef
+        return objectiveRef
             .get()
             .then((doc) => {
                 if (doc.exists) {
@@ -67,8 +68,8 @@ export function getEmptyObjective() {
     return (dispatch) => dispatch(onGetObjective({
         description: '',
         dueDate: '',
-        feedback: null,
-        isNewlyCreated: true,
+        feedback: '',
+        isNew: true,
         sharedwith: [],
         status: 'draft',
         title: '',
@@ -103,7 +104,7 @@ export function saveObjective() {
         }
         const objectiveRef = firebase.firestore().collection('objectives').doc(objective.id)
                 
-        objectiveRef
+        return objectiveRef
             .update(objective)
             .then(() => {
                 console.log('saved!')
