@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
     
     return {
         objective: state.objective.data,
+        usersSharedWith: state.objective.usersSharedWith,
     }
 }
 
@@ -34,7 +35,7 @@ class CreateObjective extends React.Component {
 
     renderObjectiveView() {
         return this.props.objective !== null
-            ? <ObjectiveView data={ this.props.objective } close={ this.goBack } save={ this.props.saveObjective } addToSharedWith={ this.props.addToSharedWith } />
+            ? <ObjectiveView data={ this.props.objective } close={ this.goBack } save={ this.props.saveObjective } addToSharedWith={ this.props.addToSharedWith } usersSharedWith={  this.props.usersSharedWith } />
             : null
     }
 

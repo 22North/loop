@@ -99,8 +99,10 @@ class ObjectiveView extends React.Component {
     }
 
     addToSharedWith(user) {
-        this.props.addToSharedWith(user.id)
-        this.setState({ ...this.state, showSharedWithEditview: false })
+        this.props.addToSharedWith(user)
+        this.setState({ 
+            showSharedWithEditview: false 
+        })
     }
 
     changeStatus(value) {
@@ -172,13 +174,15 @@ class ObjectiveView extends React.Component {
     renderAddedUsers() {
         return (
             <div className={`objective-view__shared-with-list ${( this.state.showSharedWithEditview === true || this.props.data.sharedwith.length === 0 ) ? "d-none" : "d-block"}`}>
-                <div className="row">
+                <div className="row mb-3">
                     <div className="col-sm-12">
                         <h3 className="objective-view__heading">Working on the objective with...</h3>
                     </div>
                 </div>
-                <div className="row">  
-                    { this.props.data.sharedwith.map( (userId) => <div className="col-md-3" key={ userId }><UserChip actionId={ userId } userId={ userId } /></div> ) }
+                <div className="row mb-4">  
+                    {this.props.usersSharedWith.map((user) => 
+                        <div className="col-md-3" key={ user.id }><UserChip user={ user } /></div>
+                    )}
                 </div>
             </div>
         )
